@@ -9,6 +9,9 @@ git clone --recursive https://github.com/qiue2015/vim.git ~/.config/nvim
 # for vim8
 git clone --recursive https://github.com/qiuye2015/vim.git ~/.vim
 ln -s ~/.vim/init.vim ~/.vimrc
+
+# 将一个项目同时从本地推送到 GitHub 和 Gitee
+cp config .git/config
 ```
 
 ## install
