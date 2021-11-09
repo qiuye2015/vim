@@ -19,7 +19,10 @@ ln -s ~/.vim/init.vim ~/.vimrc
 ## alias
 ```bash
 #  用fzf选择task去执行
+## nvim
 alias task='~/.config/nvim/pack/vendor_fjp/start/asynctasks.vim/bin/asynctask -f'
+## vim
+alias task='~/.vim/pack/vendor_fjp/start/asynctasks.vim/bin/asynctask -f'
 ```
 
 ## 使用 Git 管理 Vim 插件
