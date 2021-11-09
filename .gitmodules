@@ -1,0 +1,72 @@
+[submodule "pack/vendor_fjp/start/mru"]
+	path = pack/vendor_fjp/start/mru
+	url = https://github.com/lvht/mru
+[submodule "pack/vendor_fjp/start/nerdtree"]
+	path = pack/vendor_fjp/start/nerdtree
+	url = https://github.com/preservim/nerdtree
+[submodule "pack/vendor_fjp/start/nerdtree-git-plugin"]
+	path = pack/vendor_fjp/start/nerdtree-git-plugin
+	url = https://github.com/Xuyuanp/nerdtree-git-plugin
+[submodule "pack/vendor_fjp/start/tagbar"]
+	path = pack/vendor_fjp/start/tagbar
+	url = https://github.com/preservim/tagbar
+[submodule "pack/vendor_fjp/start/fzf"]
+	path = pack/vendor_fjp/start/fzf
+	url = https://github.com/epii1/fzf
+[submodule "pack/vendor_fjp/start/vim-commentary"]
+	path = pack/vendor_fjp/start/vim-commentary
+	url = https://github.com/tpope/vim-commentary
+[submodule "pack/vendor_fjp/start/auto-pairs"]
+	path = pack/vendor_fjp/start/auto-pairs
+	url = https://github.com/jiangmiao/auto-pairs
+[submodule "pack/vendor_fjp/start/indentLine"]
+	path = pack/vendor_fjp/start/indentLine
+	url = https://github.com/Yggdroot/indentLine
+[submodule "pack/vendor_fjp/start/a.vim"]
+	path = pack/vendor_fjp/start/a.vim
+	url = https://github.com/vim-scripts/a.vim
+[submodule "pack/vendor_fjp/start/syntastic"]
+	path = pack/vendor_fjp/start/syntastic
+	url = https://github.com/vim-syntastic/syntastic
+[submodule "pack/vendor_fjp/start/ack.vim"]
+	path = pack/vendor_fjp/start/ack.vim
+	url = https://github.com/mileszs/ack.vim
+[submodule "pack/vendor_fjp/start/vim-airline"]
+	path = pack/vendor_fjp/start/vim-airline
+	url = https://github.com/vim-airline/vim-airline
+[submodule "pack/vendor_fjp/start/tabular"]
+	path = pack/vendor_fjp/start/tabular
+	url = https://github.com/godlygeek/tabular
+[submodule "pack/vendor_fjp/start/vim-markdown"]
+	path = pack/vendor_fjp/start/vim-markdown
+	url = https://github.com/plasticboy/vim-markdown
+[submodule "pack/vendor_fjp/start/tender.vim"]
+	path = pack/vendor_fjp/start/tender.vim
+	url = https://github.com/jacoborus/tender.vim
+[submodule "pack/vendor_fjp/start/vim-go"]
+	path = pack/vendor_fjp/start/vim-go
+	url = https://github.com/fatih/vim-go
+[submodule "pack/vendor_fjp/start/vim-gitgutter"]
+	path = pack/vendor_fjp/start/vim-gitgutter
+	url = https://github.com/vim-scripts/vim-gitgutter
+[submodule "pack/vendor_fjp/start/nvim-colorizer.lua"]
+	path = pack/vendor_fjp/start/nvim-colorizer.lua
+	url = https://github.com/norcalli/nvim-colorizer.lua
+[submodule "pack/vendor_fjp/start/vim-airline-themes"]
+	path = pack/vendor_fjp/start/vim-airline-themes
+	url = https://github.com/vim-airline/vim-airline-themes
+[submodule "pack/vendor_fjp/start/vim-cpp-enhanced-highlight"]
+	path = pack/vendor_fjp/start/vim-cpp-enhanced-highlight
+	url = https://github.com/octol/vim-cpp-enhanced-highlight
+[submodule "pack/vendor_fjp/start/vim-colorschemes"]
+	path = pack/vendor_fjp/start/vim-colorschemes
+	url = https://github.com/flazz/vim-colorschemes/
+[submodule "pack/vendor_fjp/start/vim-gutentags"]
+	path = pack/vendor_fjp/start/vim-gutentags
+	url = https://github.com/ludovicchabant/vim-gutentags
+[submodule "pack/vendor_fjp/start/asyncrun.vim"]
+	path = pack/vendor_fjp/start/asyncrun.vim
+	url = https://github.com/skywind3000/asyncrun.vim
+[submodule "pack/vendor_fjp/start/asynctasks.vim"]
+	path = pack/vendor_fjp/start/asynctasks.vim
+	url = https://github.com/skywind3000/asynctasks.vim
