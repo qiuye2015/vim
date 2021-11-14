@@ -1,6 +1,6 @@
 [submodule "pack/vendor_fjp/start/mru"]
 	path = pack/vendor_fjp/start/mru
-	url = https://github.com/lvht/mru
+	url = https://gitee.com/qiuye_dlmu/mru
 [submodule "pack/vendor_fjp/start/nerdtree"]
 	path = pack/vendor_fjp/start/nerdtree
 	url = https://github.com/preservim/nerdtree
