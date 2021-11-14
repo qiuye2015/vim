@@ -3,70 +3,70 @@
 	url = https://gitee.com/qiuye_dlmu/mru
 [submodule "pack/vendor_fjp/start/nerdtree"]
 	path = pack/vendor_fjp/start/nerdtree
-	url = https://github.com/preservim/nerdtree
+	url = https://gitee.com/qiuye_dlmu/nerdtree
 [submodule "pack/vendor_fjp/start/nerdtree-git-plugin"]
 	path = pack/vendor_fjp/start/nerdtree-git-plugin
-	url = https://github.com/Xuyuanp/nerdtree-git-plugin
+	url = https://gitee.com/qiuye_dlmu/nerdtree-git-plugin
 [submodule "pack/vendor_fjp/start/tagbar"]
 	path = pack/vendor_fjp/start/tagbar
-	url = https://github.com/preservim/tagbar
+	url = https://gitee.com/qiuye_dlmu/tagbar
 [submodule "pack/vendor_fjp/start/fzf"]
 	path = pack/vendor_fjp/start/fzf
-	url = https://github.com/epii1/fzf
+	url = https://gitee.com/qiuye_dlmu/fzf
 [submodule "pack/vendor_fjp/start/vim-commentary"]
 	path = pack/vendor_fjp/start/vim-commentary
-	url = https://github.com/tpope/vim-commentary
+	url = https://gitee.com/qiuye_dlmu/vim-commentary
 [submodule "pack/vendor_fjp/start/auto-pairs"]
 	path = pack/vendor_fjp/start/auto-pairs
-	url = https://github.com/jiangmiao/auto-pairs
+	url = https://gitee.com/qiuye_dlmu/auto-pairs
 [submodule "pack/vendor_fjp/start/indentLine"]
 	path = pack/vendor_fjp/start/indentLine
-	url = https://github.com/Yggdroot/indentLine
+	url = https://gitee.com/qiuye_dlmu/indentLine
 [submodule "pack/vendor_fjp/start/a.vim"]
 	path = pack/vendor_fjp/start/a.vim
-	url = https://github.com/vim-scripts/a.vim
+	url = https://gitee.com/qiuye_dlmu/a.vim
 [submodule "pack/vendor_fjp/start/syntastic"]
 	path = pack/vendor_fjp/start/syntastic
-	url = https://github.com/vim-syntastic/syntastic
+	url = https://gitee.com/qiuye_dlmu/syntastic
 [submodule "pack/vendor_fjp/start/ack.vim"]
 	path = pack/vendor_fjp/start/ack.vim
-	url = https://github.com/mileszs/ack.vim
+	url = https://gitee.com/qiuye_dlmu/ack.vim
 [submodule "pack/vendor_fjp/start/vim-airline"]
 	path = pack/vendor_fjp/start/vim-airline
-	url = https://github.com/vim-airline/vim-airline
+	url = https://gitee.com/qiuye_dlmu/vim-airline
 [submodule "pack/vendor_fjp/start/tabular"]
 	path = pack/vendor_fjp/start/tabular
-	url = https://github.com/godlygeek/tabular
+	url = https://gitee.com/qiuye_dlmu/tabular
 [submodule "pack/vendor_fjp/start/vim-markdown"]
 	path = pack/vendor_fjp/start/vim-markdown
-	url = https://github.com/plasticboy/vim-markdown
+	url = https://gitee.com/qiuye_dlmu/vim-markdown
 [submodule "pack/vendor_fjp/start/tender.vim"]
 	path = pack/vendor_fjp/start/tender.vim
-	url = https://github.com/jacoborus/tender.vim
+	url = https://gitee.com/qiuye_dlmu/tender.vim
 [submodule "pack/vendor_fjp/start/vim-go"]
 	path = pack/vendor_fjp/start/vim-go
-	url = https://github.com/fatih/vim-go
+	url = https://gitee.com/qiuye_dlmu/vim-go
 [submodule "pack/vendor_fjp/start/vim-gitgutter"]
 	path = pack/vendor_fjp/start/vim-gitgutter
-	url = https://github.com/vim-scripts/vim-gitgutter
+	url = https://gitee.com/qiuye_dlmu/vim-gitgutter
 [submodule "pack/vendor_fjp/start/nvim-colorizer.lua"]
 	path = pack/vendor_fjp/start/nvim-colorizer.lua
-	url = https://github.com/norcalli/nvim-colorizer.lua
+	url = https://gitee.com/qiuye_dlmu/nvim-colorizer.lua
 [submodule "pack/vendor_fjp/start/vim-airline-themes"]
 	path = pack/vendor_fjp/start/vim-airline-themes
-	url = https://github.com/vim-airline/vim-airline-themes
+	url = https://gitee.com/qiuye_dlmu/vim-airline-themes
 [submodule "pack/vendor_fjp/start/vim-cpp-enhanced-highlight"]
 	path = pack/vendor_fjp/start/vim-cpp-enhanced-highlight
-	url = https://github.com/octol/vim-cpp-enhanced-highlight
+	url = https://gitee.com/qiuye_dlmu/vim-cpp-enhanced-highlight
 [submodule "pack/vendor_fjp/start/vim-colorschemes"]
 	path = pack/vendor_fjp/start/vim-colorschemes
-	url = https://github.com/flazz/vim-colorschemes/
+	url = https://gitee.com/qiuye_dlmu/vim-colorschemes/
 [submodule "pack/vendor_fjp/start/vim-gutentags"]
 	path = pack/vendor_fjp/start/vim-gutentags
-	url = https://github.com/ludovicchabant/vim-gutentags
+	url = https://gitee.com/qiuye_dlmu/vim-gutentags
 [submodule "pack/vendor_fjp/start/asyncrun.vim"]
 	path = pack/vendor_fjp/start/asyncrun.vim
-	url = https://github.com/skywind3000/asyncrun.vim
+	url = https://gitee.com/qiuye_dlmu/asyncrun.vim
 [submodule "pack/vendor_fjp/start/asynctasks.vim"]
 	path = pack/vendor_fjp/start/asynctasks.vim
-	url = https://github.com/skywind3000/asynctasks.vim
+	url = https://gitee.com/qiuye_dlmu/asynctasks.vim
