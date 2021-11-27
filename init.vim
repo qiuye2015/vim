@@ -221,7 +221,7 @@ set sw=4                  " 缩进代码时的缩进量(shiftwidth)为 4
 set expandtab             " 输入tab时自动将其转化为空格(et);set noet(禁止)
 set softtabstop=4         " 如果设置了expandtab那么展开tab为多少字符
 set smarttab              " 使用et将Tab替换为空格之后;按Backspace就删除4个空格
-set paste                 " 插入模式下粘贴内容,不会有任何变形;
+"set paste                " 插入模式下粘贴内容,不会有任何变形;影响imap使用
 set autoindent            " 自动缩进;和set paste不能同时出现;后配置的生效
 set cindent               " c语言缩进风格
 set smartindent           " 开启新行时使用智能自动缩进
@@ -522,6 +522,14 @@ let g:asyncrun_bell = 1
 " let g:asynctasks_extra_config = [
 "     \ '~/.config/nvim/my_tasks.ini',
 "     \ ]
+
+" -----------------------------------------------------------------------------
+" imap <silent><script><expr> <C-J> copilot#Accept("\<CR>")
+" let g:copilot_no_tab_map = v:true
+" highlight CopilotSuggestion guifg=#555555 ctermfg=8
+" :Copilot status
+" :Copilot disable
+" :Copilot enable
 
 " -----------------------------------------------------------------------------
 
