@@ -61,6 +61,7 @@ git submodule add https://github.com/preservim/tagbar pack/vendor_fjp/start/tagb
 git submodule add https://github.com/preservim/nerdtree pack/vendor_fjp/start/nerdtree
 git submodule add https://github.com/Xuyuanp/nerdtree-git-plugin pack/vendor_fjp/start/nerdtree-git-plugin
 git submodule add https://github.com/vim-scripts/vim-gitgutter pack/vendor_fjp/start/vim-gitgutter
+git submodule add https://github.com/zivyangll/git-blame.vim pack/vendor_fjp/start/git-blame.vim
 git submodule add https://github.com/godlygeek/tabular pack/vendor_fjp/start/tabular
 git submodule add https://github.com/plasticboy/vim-markdown pack/vendor_fjp/start/vim-markdown
 

@@ -145,6 +145,9 @@ nnoremap <silent> <leader>l :IndentLinesToggle<cr>
 nmap ]h <Plug>GitGutterNextHunk
 nmap [h <Plug>GitGutterPrevHunk
 
+" git-blame.vim
+nnoremap <silent> <leader>s :<C-u>call gitblame#echo()<CR>
+
 " " AsyncRun
 " " Compile and run a single file
 " nnoremap <silent> <F4> :AsyncRun gcc -Wall -O2 "$(VIM_FILEPATH)" -o "$(VIM_FILEDIR)/$(VIM_FILENOEXT)" <cr>
