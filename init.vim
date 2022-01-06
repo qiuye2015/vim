@@ -16,7 +16,7 @@
 " 显示文件标签          <preservim/tagbar> eg:类|结构体|函数|变量等
 " 显示树形目录          <preservim/nerdtree>
 " 显示git状态在nerdtree <Xuyuanp/nerdtree-git-plugin>
-" git diff显示          <vim-scripts/vim-gitgutter>
+" 显示git diff          <vim-scripts/vim-gitgutter>
 " 文本对齐              <godlygeek/tabular>,同vim-easy-align,vim-markdown依赖
 " 语法高亮md            <plasticboy/vim-markdown>
 
@@ -24,6 +24,7 @@
 " 主题                  <vim-airline/vim-airline-themes>
 " 24bit真彩色配色方案   <jacoborus/tender.vim>
 " 配色方案集合          <flazz/vim-colorschemes>
+" 随心所欲切换主题      <chxuan/change-colorscheme>
 " 颜色着色器            <norcalli/nvim-colorizer.lua>仅适用Neovim
 "
 " 代码缩进线条          <Yggdroot/indentLine>
@@ -129,6 +130,14 @@
 " # use fzf to select tasks
 " $ asynctask -f
 
+"------------------------------------------------------------------------------
+" change-colorscheme
+"------------------------------------------------------------------------------
+" :PreviousColorScheme    加载上一个主题
+" :NextColorScheme        加载下一个主题
+" :RandomColorScheme      随机加载主题
+" :ShowColorScheme        显示当前主题
+
 ""==============================================================================
 "" 快捷键
 ""==============================================================================
@@ -169,7 +178,7 @@ nnoremap <silent> <leader>s :<C-u>call gitblame#echo()<CR>
 " endif
 
 " 设置 F10 打开/关闭 Quickfix 窗口
-noremap <silent><F10> :call asyncrun#quickfix_toggle(6)<cr>
+noremap <silent><F3> :call asyncrun#quickfix_toggle(6)<cr>
 
 " AsyncTask
 noremap <silent><F4> :AsyncTask file-build<cr>
@@ -183,6 +192,17 @@ noremap <silent><s-f5> :AsyncTask project-run<cr>
 noremap <silent><s-f6> :AsyncTask project-test<cr>
 noremap <silent><s-f7> :AsyncTask project-init<cr>
 noremap <silent><s-f8> :AsyncTask project-install<cr>
+
+" change-colorscheme
+nnoremap <silent> <F9> :PreviousColorScheme<cr>
+inoremap <silent> <F9> <esc> :PreviousColorScheme<cr>
+nnoremap <silent> <F10> :NextColorScheme<cr>
+inoremap <silent> <F10> <esc> :NextColorScheme<cr>
+
+nnoremap <silent> <F11> :RandomColorScheme<cr>
+inoremap <silent> <F11> <esc> :RandomColorScheme<cr>
+nnoremap <silent> <F12> :ShowColorScheme<cr>
+inoremap <silent> <F12> <esc> :ShowColorScheme<cr>
 
 "==============================================================================
 " 基础配置
@@ -583,6 +603,19 @@ elseif (!has('gui_running')) && has('terminal') && has('patch-8.0.1200')
     set t_RS=
     set t_SH=
 endif
+
+"------------------------------------------------------------------------------
+" 需要的时候加载插件，那就放到 `~/.vim/pack/*/opt/` 目录
+"------------------------------------------------------------------------------
+
+" packadd! myself
+" packadd! templates_load
+" let g:template_load = 1
+" let g:template_tags_replacing = 1
+" let g:T_AUTHOR = "fjp"
+" let g:T_AUTHOR_EMAIL = "fjp@gmail.com"
+" let g:T_AUTHOR_WEBSITE = "http://www.fjp.cn"
+" let g:T_DATE_FORMAT = "%c"
 
 "==============================================================================
 " END

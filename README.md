@@ -82,3 +82,21 @@ git submodule add https://github.com/skywind3000/asynctasks.vim pack/vendor_fjp/
 git submodule add https://github.com/fatih/vim-go pack/vendor_fjp/start/vim-go
 git submodule add https://github.com/octol/vim-cpp-enhanced-highlight pack/vendor_fjp/start/vim-cpp-enhanced-highlight
 ````
+
+### 自定义插件
+```bash
+# 加载
+# packadd myself
+# packadd templates_load
+
+pack/vendor_fjp/opt/
+├── myself
+│   └── plugin
+│       ├── comdg.vim         # 生成C++函数文档
+│       └── insert.vim        # 避免同一个文件被include多次,ifndef
+└── templates_load
+    ├── plugin
+    │   └── load_template.vim # 自动加载模板插件
+    └── templates
+        └── tpl.c             # 模板
+```
