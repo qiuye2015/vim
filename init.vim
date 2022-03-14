@@ -19,6 +19,7 @@
 " 显示git diff          <vim-scripts/vim-gitgutter>
 " 文本对齐              <godlygeek/tabular>,同vim-easy-align,vim-markdown依赖
 " 语法高亮md            <plasticboy/vim-markdown>
+" 显示并修复（删除）尾部的空格                <bronson/vim-trailing-whitespace>
 
 " 状态栏美化            <vim-airline/vim-airline>
 " 主题                  <vim-airline/vim-airline-themes>
@@ -138,10 +139,15 @@
 " :RandomColorScheme      随机加载主题
 " :ShowColorScheme        显示当前主题
 
-""==============================================================================
+"==============================================================================
 "" 快捷键
-""==============================================================================
-"let mapleader = ","
+"==============================================================================
+:command Wq wq
+:command WQ wq
+
+"------------------------------------------------------------------------------
+let mapleader = ","
+let maplocalleader="_"
 
 nnoremap <silent> <c-u> :Mru<cr>
 nnoremap <silent> <c-p> :call fzf#Open()<cr>
@@ -162,7 +168,7 @@ nnoremap <silent> <leader>s :<C-u>call gitblame#echo()<CR>
 " nnoremap <silent> <F4> :AsyncRun gcc -Wall -O2 "$(VIM_FILEPATH)" -o "$(VIM_FILEDIR)/$(VIM_FILENOEXT)" <cr>
 " nnoremap <silent> <F5> :AsyncRun -raw -cwd=$(VIM_FILEDIR) "$(VIM_FILEDIR)/$(VIM_FILENOEXT)" <cr>
 " " Build C/C++ projects
-" let g:asyncrun_rootmarks = ['.svn', '.git', '.root', '_darcs', 'build.xml'] 
+" let g:asyncrun_rootmarks = ['.svn', '.git', '.root', '_darcs', 'build.xml']
 " nnoremap <silent> <F6> :AsyncRun -cwd=<root> -raw make test <cr>
 " nnoremap <silent> <F7> :AsyncRun -cwd=<root> make <cr>
 " nnoremap <silent> <F8> :AsyncRun -cwd=<root> -raw make run <cr>
@@ -170,10 +176,10 @@ nnoremap <silent> <leader>s :<C-u>call gitblame#echo()<CR>
 " " F10 to toggle quickfix window
 " nnoremap <F10> :call asyncrun#quickfix_toggle(6)<cr>
 " if has('win32') || has('win64')
-"     noremap <silent><F2> :AsyncRun! -cwd=<root> findstr /n /s /C:"<C-R><C-W>" 
+"     noremap <silent><F2> :AsyncRun! -cwd=<root> findstr /n /s /C:"<C-R><C-W>"
 "             \ "\%CD\%\*.h" "\%CD\%\*.c*" <cr>
 " else
-"     noremap <silent><F2> :AsyncRun! -cwd=<root> grep -n -s -R <C-R><C-W> 
+"     noremap <silent><F2> :AsyncRun! -cwd=<root> grep -n -s -R <C-R><C-W>
 "             \ --include='*.h' --include='*.c*' '<root>' <cr>
 " endif
 
@@ -224,7 +230,7 @@ set backspace=indent,eol,start     " 插入状态使用Backspace或者Delete删�
 set ffs=unix,dos,mac    " 设置文件类型 Use Unix as the standard file type
 set encoding=utf-8      " (enc)vim内部使用的编码,包括文件内容,寄存器等
 set fileencoding=utf-8  " (fenc)检测到的文件编码
-set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936,latin-1 
+set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936,latin-1
 " 打开文件时自动尝试下面顺序的编码,如果执行成功,则该编码为文件编码
 " 并设置fileencoding
 
@@ -252,7 +258,7 @@ filetype plugin indent on " 允许 Vim 自带脚本根据文件类型自动设�
 augroup PythonTab
         au!
         " 如果你需要 python 里用 tab,那么反注释下面这行字,
-        " 否则vim会在打开py文件时自动设置成空格缩进. 
+        " 否则vim会在打开py文件时自动设置成空格缩进.
         " au FileType python setlocal shiftwidth=4 tabstop=4 noexpandtab
 augroup END
 
@@ -391,6 +397,47 @@ colorscheme solarized8_dark
 " hi StatusLineTerm guibg=#444444 guifg=#b3deef
 " hi StatusLineTermNC guibg=#444444 guifg=#999999
 
+"------------------------------------------------------------------------------
+" 防止tmux下vim的背景色显示异常
+" Refer: http://sunaku.github.io/vim-256color-bce.html
+"------------------------------------------------------------------------------
+if &term =~ '256color' && $TMUX != ''
+    " disable Background Color Erase (BCE) so that color schemes
+    " render properly when inside 256-color tmux and GNU screen.
+    " see also http://snk.tuxfamily.org/log/vim-256color-bce.html
+    set t_ut=
+endif
+
+" 修正 ScureCRT/XShell 以及某些终端乱码问题，主要原因是不支持一些
+" 终端控制命令，比如 cursor shaping 这类更改光标形状的 xterm 终端命令
+" 会令一些支持 xterm 不完全的终端解析错误，显示为错误的字符，比如 q 字符
+" 如果你确认你的终端支持，不会在一些不兼容的终端上运行该配置，可以注释
+if has('nvim')
+    set guicursor=
+elseif (!has('gui_running')) && has('terminal') && has('patch-8.0.1200')
+    let g:termcap_guicursor = &guicursor
+    let g:termcap_t_RS = &t_RS
+    let g:termcap_t_SH = &t_SH
+    set guicursor=
+    set t_RS=
+    set t_SH=
+endif
+
+"==============================================================================
+" 自定义
+"==============================================================================
+" vim记住上次编辑和浏览位置
+" Only do this part when compiled with support for autocommands
+if has("autocmd")
+	" In text files, always limit the width of text to 78 characters
+	" autocmd BufRead *.txt set tw=78
+	" When editing a file, always jump to the last cursor position
+	autocmd BufReadPost *
+	\ if line("'\"") > 0 && line ("'\"") <= line("$") |
+	\   exe "normal! g'\"" |
+	\ endif
+endif
+
 "==============================================================================
 " 插件设置
 "==============================================================================
@@ -488,7 +535,7 @@ let g:go_fmt_command = "goimports" " 保存时自动运行goimports;gofmt,goimpo
 " let g:go_highlight_operators = 1
 " let g:go_highlight_extra_types = 1
 " let g:go_highlight_build_constraints = 1
-" autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4 
+" autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4
 
 " -----------------------------------------------------------------------------
 
@@ -555,54 +602,6 @@ let g:asyncrun_bell = 1
 " :Copilot enable
 
 " -----------------------------------------------------------------------------
-
-"==============================================================================
-" 自定义
-"==============================================================================
-" vim记住上次编辑和浏览位置
-" Only do this part when compiled with support for autocommands
-if has("autocmd")
-	" In text files, always limit the width of text to 78 characters
-	" autocmd BufRead *.txt set tw=78
-	" When editing a file, always jump to the last cursor position
-	autocmd BufReadPost *
-	\ if line("'\"") > 0 && line ("'\"") <= line("$") |
-	\   exe "normal! g'\"" |
-	\ endif
-endif
-
-if &term =~ '256color'
-  " disable Background Color Erase (BCE) so that color schemes
-  " render properly when inside 256-color tmux and GNU screen.
-  " see also http://snk.tuxfamily.org/log/vim-256color-bce.html
-  set t_ut=
-endif
-
-"------------------------------------------------------------------------------
-" 防止tmux下vim的背景色显示异常
-" Refer: http://sunaku.github.io/vim-256color-bce.html
-"------------------------------------------------------------------------------
-if &term =~ '256color' && $TMUX != ''
-    " disable Background Color Erase (BCE) so that color schemes
-    " render properly when inside 256-color tmux and GNU screen.
-    " see also http://snk.tuxfamily.org/log/vim-256color-bce.html
-    set t_ut=
-endif
-
-" 修正 ScureCRT/XShell 以及某些终端乱码问题，主要原因是不支持一些
-" 终端控制命令，比如 cursor shaping 这类更改光标形状的 xterm 终端命令
-" 会令一些支持 xterm 不完全的终端解析错误，显示为错误的字符，比如 q 字符
-" 如果你确认你的终端支持，不会在一些不兼容的终端上运行该配置，可以注释
-if has('nvim')
-    set guicursor=
-elseif (!has('gui_running')) && has('terminal') && has('patch-8.0.1200')
-    let g:termcap_guicursor = &guicursor
-    let g:termcap_t_RS = &t_RS
-    let g:termcap_t_SH = &t_SH
-    set guicursor=
-    set t_RS=
-    set t_SH=
-endif
 
 "------------------------------------------------------------------------------
 " 需要的时候加载插件，那就放到 `~/.vim/pack/*/opt/` 目录

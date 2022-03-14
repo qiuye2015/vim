@@ -81,6 +81,7 @@ git submodule add https://github.com/skywind3000/asynctasks.vim pack/vendor_fjp/
 
 git submodule add https://github.com/fatih/vim-go pack/vendor_fjp/start/vim-go
 git submodule add https://github.com/octol/vim-cpp-enhanced-highlight pack/vendor_fjp/start/vim-cpp-enhanced-highlight
+git submodule add https://gitee.com/mirrors_bronson/vim-trailing-whitespace pack/vendor_fjp/start/vim-trailing-whitespace
 ````
 
 ### 自定义插件
