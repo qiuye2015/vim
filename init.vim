@@ -152,8 +152,8 @@ let maplocalleader="_"
 nnoremap <silent> <c-u> :Mru<cr>
 nnoremap <silent> <c-p> :call fzf#Open()<cr>
 nnoremap <silent> <leader>t :TagbarToggle<cr>
-nnoremap <silent> <leader>e :NERDTreeToggle<cr>
-nnoremap <silent> <leader>f :NERDTreeFind<cr>
+nnoremap <silent> <leader>n :NERDTreeFind<cr>
+nnoremap <silent> <leader>m :NERDTreeToggle<cr>
 " 打开关闭缩进线条
 nnoremap <silent> <leader>l :IndentLinesToggle<cr>
 "" <vim-gitgutter> git区块之间跳转
@@ -471,6 +471,10 @@ let g:AutoPairsFlyMode = 1
 if executable('ag') " 如果有ag的情况下,使用ag而不是使用ack
   let g:ackprg = 'ag --vimgrep'
 endif
+" 加上!，禁止跳到第一个搜索结果; cnoreabbrev 缩写
+cnoreabbrev Ack Ack!
+nnoremap <Leader>a :Ack!<Space>
+let g:ackhighlight = 1 " 高亮搜索关键词
 
 "-----------------------------------------------------------------------------
 
