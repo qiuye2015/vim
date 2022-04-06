@@ -311,7 +311,7 @@ set matchtime=2    " 显示括号匹配的时间
 set number         " 显示行号 relativenumber 相对行号
 set wrap           " 一行内显示不下自动换行 nowrap
 set linebreak      " 不会在单词内部折行,显示窗口比较小的时候折行展示
-set list           " 显示 TAB 键
+" set list           " 显示 TAB 键
 set listchars=tab:+-,trail:-,nbsp:-,eol:$          " 替换tab空格字符
 set signcolumn=yes " 总是显示侧边栏(用于显示 mark/gitdiff/诊断信息)
 
