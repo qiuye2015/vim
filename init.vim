@@ -145,18 +145,13 @@
 :command Wq wq
 :command WQ wq
 
-"------------------------------------------------------------------------------
-let mapleader = ","
-let maplocalleader="_"
-
-" 没加sudo导致无法保存时
-" :w !sudo tee %
-" :%TOhtml
-map R :source $MYVIMRC<CR>
-map W <C-w>w
-
+" :w !sudo tee %            "  没加sudo导致无法保存时
+" :%TOhtml                  " 保存为html
 " 插入acscii 文字
 map tx :r !figlet " 插入acscii 文字
+map R :source $MYVIMRC<CR>  " 手动加载配置文件
+map W <C-w>w
+
 
 map te :tabedit<CR>
 map tl :-tabmove<CR>
@@ -195,6 +190,11 @@ map <leader>$ :syntax sync fromstart<CR>
 nnoremap <space> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
 " Ctrl-Shift-_
 nnoremap <C-_> @=((foldclosed(line('.')) < 0) ? 'zM' : 'zR')<CR>
+
+
+"------------------------------------------------------------------------------
+let mapleader = ","
+let maplocalleader="_"
 
 nnoremap <silent> <c-u> :Mru<cr>
 nnoremap <silent> <c-p> :call fzf#Open()<cr>
@@ -355,7 +355,8 @@ set completeopt=menuone,noinsert,noselect
 "==============================================================================
 set showmatch      " 显示匹配的括号
 set matchtime=2    " 显示括号匹配的时间
-set number         " 显示行号 relativenumber 相对行号
+set number         " 显示行号
+"set relativenumber " 显示相对行号
 set wrap           " 一行内显示不下自动换行 nowrap
 set linebreak      " 不会在单词内部折行,显示窗口比较小的时候折行展示
 " set list           " 显示 TAB 键
