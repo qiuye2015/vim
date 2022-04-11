@@ -149,6 +149,53 @@
 let mapleader = ","
 let maplocalleader="_"
 
+" 没加sudo导致无法保存时
+" :w !sudo tee %
+" :%TOhtml
+map R :source $MYVIMRC<CR>
+map W <C-w>w
+
+" 插入acscii 文字
+map tx :r !figlet " 插入acscii 文字
+
+map te :tabedit<CR>
+map tl :-tabmove<CR>
+map tr :+tabmove<CR>
+map tn :+tabnext<CR>
+map tp :-tabnext<CR>
+
+map sr :set splitright<CR>:vsplit<CR>
+map sl :set nosplitright<CR>:vsplit<CR>
+map su :set nosplitbelow<CR>:split<CR>
+map sd :set splitbelow<CR>:split<CR>
+map <s-up> :res -5<CR>
+map <s-down> :res +5<CR>
+map <s-left> :vertical resize -5<CR>
+map <s-right> :vertical resize +5<CR>
+
+map <leader>1 :set syntax=sh<CR>
+map <leader>2 :set syntax=c<CR>
+map <leader>3 :set syntax=cpp<CR>
+map <leader>4 :set syntax=python<CR>
+map <leader>5 :set syntax=cfg<CR>
+map <leader>$ :syntax sync fromstart<CR>
+
+" zM 递归折叠所有
+" zR 递归展开所有
+
+" zm 逐层折叠所有
+" zr 逐层展开所有
+
+" zi 打开/关闭所有折叠
+" za 打开/关闭当前折叠
+"
+" zc 折叠当前行
+" zo 打开当前折叠
+" 用空格键来开关折叠
+nnoremap <space> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
+" Ctrl-Shift-_
+nnoremap <C-_> @=((foldclosed(line('.')) < 0) ? 'zM' : 'zR')<CR>
+
 nnoremap <silent> <c-u> :Mru<cr>
 nnoremap <silent> <c-p> :call fzf#Open()<cr>
 nnoremap <silent> <leader>t :TagbarToggle<cr>
@@ -314,6 +361,7 @@ set linebreak      " 不会在单词内部折行,显示窗口比较小的时候�
 " set list           " 显示 TAB 键
 set listchars=tab:+-,trail:-,nbsp:-,eol:$          " 替换tab空格字符
 set signcolumn=yes " 总是显示侧边栏(用于显示 mark/gitdiff/诊断信息)
+set scrolloff=5    " 垂直滚动时,光标距离顶部/底部的位置
 
 "==============================================================================
 " 状态栏设置
@@ -436,6 +484,10 @@ if has("autocmd")
 	\ if line("'\"") > 0 && line ("'\"") <= line("$") |
 	\   exe "normal! g'\"" |
 	\ endif
+	" 设置 vimrc 修改保存后立刻生效，不用在重新打开
+	" autocmd BufWritePost $MYVIMRC source $MYVIMRC
+	autocmd BufEnter * :syntax sync fromstart " 重新同步一下语法着色
+	autocmd BufNewFile,BufRead *.conf set syntax=cfg
 endif
 
 "==============================================================================
