@@ -40,15 +40,9 @@
 [submodule "pack/vendor_fjp/start/vim-markdown"]
 	path = pack/vendor_fjp/start/vim-markdown
 	url = https://gitee.com/qiuye_dlmu/vim-markdown
-[submodule "pack/vendor_fjp/start/tender.vim"]
-	path = pack/vendor_fjp/start/tender.vim
-	url = https://gitee.com/qiuye_dlmu/tender.vim
 [submodule "pack/vendor_fjp/start/vim-go"]
 	path = pack/vendor_fjp/start/vim-go
 	url = https://gitee.com/qiuye_dlmu/vim-go
-[submodule "pack/vendor_fjp/start/vim-gitgutter"]
-	path = pack/vendor_fjp/start/vim-gitgutter
-	url = https://gitee.com/qiuye_dlmu/vim-gitgutter
 [submodule "pack/vendor_fjp/start/nvim-colorizer.lua"]
 	path = pack/vendor_fjp/start/nvim-colorizer.lua
 	url = https://gitee.com/qiuye_dlmu/nvim-colorizer.lua
@@ -82,3 +76,12 @@
 [submodule "pack/vendor_fjp/start/vim-trailing-whitespace"]
 	path = pack/vendor_fjp/start/vim-trailing-whitespace
 	url = https://gitee.com/mirrors_bronson/vim-trailing-whitespace
+[submodule "pack/vendor_fjp/start/vim-gitgutter"]
+	path = pack/vendor_fjp/start/vim-gitgutter
+	url = https://gitee.com/qiuye_dlmu/vim-gitgutter
+[submodule "pack/vendor_fjp/start/vim-snippets"]
+	path = pack/vendor_fjp/start/vim-snippets
+	url = https://github.com/honza/vim-snippets
+[submodule "pack/vendor_fjp/start/vim-terminal-help"]
+	path = pack/vendor_fjp/start/vim-terminal-help
+	url = https://gitee.com/qiuye_dlmu/vim-terminal-help

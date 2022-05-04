@@ -1,7 +1,9 @@
 # FJP' vimrc
+
 Support both vim8 and neovim.
 
 ## usage
+
 ```bash
 # for neovim
 git clone --recursive https://github.com/qiue2015/vim.git ~/.config/nvim
@@ -12,12 +14,37 @@ ln -s ~/.vim/init.vim ~/.vimrc
 
 # 将一个项目同时从本地推送到 GitHub 和 Gitee
 cp config .git/config
+
+# 处理runtimepath下的所有文档
+:helptags ALL
 ```
 
 ## install
+
 - fzf
 - ag/ack
 - universal-ctags
+
+## install Coc
+
+```bash
+# install node
+# curl -sL install-node.now.sh | bash
+mkdir -p ~/.config/nvim/pack/coc_fjp/start
+cd  ~/.config/nvim/pack/coc_fjp/start
+git clone --branch release https://github.com/neoclide/coc.nvim.git --depth=1
+nvim -c "helptags coc.nvim/doc/ | q"
+```
+
+## install vimspector
+```bash
+cd ~/.config/nvim/pack/vendor_fjp/opt
+wget https://github.com/puremourning/vimspector/archive/refs/tags/2254158724.tar.gz
+tar -zxvf 2254158724.tar.gz
+# curl -L <url> | tar -C $HOME/.config/nvim/pack/vendor_fjp/opt zxvf -
+# python3 install_gadget.py --all ==> VimspectorInstall
+# python3 install_gadget.py --enable-c --enable-cpp --enable-python --enable-go
+```
 
 ## alias
 ```bash
@@ -51,39 +78,6 @@ git commit
 git push
 ```
 ## 附录
-### 已经安装
-```bash
-git submodule add https://github.com/lvht/mru pack/vendor_fjp/start/mru
-git submodule add https://github.com/epii1/fzf pack/vendor_fjp/start/fzf
-git submodule add https://github.com/mileszs/ack.vim pack/vendor_fjp/start/ack.vim
-git submodule add https://github.com/vim-scripts/a.vim pack/vendor_fjp/start/a.vim
-git submodule add https://github.com/preservim/tagbar pack/vendor_fjp/start/tagbar
-git submodule add https://github.com/preservim/nerdtree pack/vendor_fjp/start/nerdtree
-git submodule add https://github.com/Xuyuanp/nerdtree-git-plugin pack/vendor_fjp/start/nerdtree-git-plugin
-git submodule add https://github.com/vim-scripts/vim-gitgutter pack/vendor_fjp/start/vim-gitgutter
-git submodule add https://github.com/zivyangll/git-blame.vim pack/vendor_fjp/start/git-blame.vim
-git submodule add https://github.com/godlygeek/tabular pack/vendor_fjp/start/tabular
-git submodule add https://github.com/plasticboy/vim-markdown pack/vendor_fjp/start/vim-markdown
-
-git submodule add https://github.com/vim-airline/vim-airline pack/vendor_fjp/start/vim-airline
-git submodule add https://github.com/vim-airline/vim-airline-themes pack/vendor_fjp/start/vim-airline-themes
-git submodule add https://github.com/jacoborus/tender.vim pack/vendor_fjp/start/tender.vim
-git submodule add https://github.com/flazz/vim-colorschemes/ pack/vendor_fjp/start/vim-colorschemes
-git submodule add https://github.com/norcalli/nvim-colorizer.lua pack/vendor_fjp/start/nvim-colorizer.lua
-
-git submodule add https://github.com/Yggdroot/indentLine pack/vendor_fjp/start/indentLine
-git submodule add https://github.com/tpope/vim-commentary pack/vendor_fjp/start/vim-commentary 
-git submodule add https://github.com/jiangmiao/auto-pairs pack/vendor_fjp/start/auto-pairs
-git submodule add https://github.com/vim-syntastic/syntastic pack/vendor_fjp/start/syntastic
-git submodule add https://github.com/ludovicchabant/vim-gutentags pack/vendor_fjp/start/vim-gutentags
-git submodule add https://github.com/skywind3000/asyncrun.vim pack/vendor_fjp/start/asyncrun.vim
-git submodule add https://github.com/skywind3000/asynctasks.vim pack/vendor_fjp/start/asynctasks.vim
-
-git submodule add https://github.com/fatih/vim-go pack/vendor_fjp/start/vim-go
-git submodule add https://github.com/octol/vim-cpp-enhanced-highlight pack/vendor_fjp/start/vim-cpp-enhanced-highlight
-git submodule add https://gitee.com/mirrors_bronson/vim-trailing-whitespace pack/vendor_fjp/start/vim-trailing-whitespace
-````
-
 ### 自定义插件
 ```bash
 # 加载
@@ -100,4 +94,9 @@ pack/vendor_fjp/opt/
     │   └── load_template.vim # 自动加载模板插件
     └── templates
         └── tpl.c             # 模板
+```
+# vim 命令
+```bash
+vim --startuptime start.log test1.py # 启动速度
+# :%TOhtml                  " 保存为html
 ```

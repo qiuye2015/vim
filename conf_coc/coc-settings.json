@@ -1,0 +1,105 @@
+{
+  "coc.preferences.extensionUpdateCheck": "never",
+  "suggest.autoTrigger": "always",
+  "suggest.timeout": 5000,
+  "suggest.enablePreview": true,
+  "suggest.floatEnable": true,
+  "suggest.detailField": "preview",
+  "suggest.completionItemKindLabels": {
+    "class": "\uf0e8",
+    "color": "\ue22b"
+  },
+  "codeLens.enable": true,
+  // coc-highlight
+  "highlight.colors.enable": true,
+  "highlight.document.enable": true,
+  "highlight.colorNames.enable": true,
+  "highlight.disableLanguages": [],
+  "colors.filetypes": ["*"],
+  // coc-lists
+  "list.source.mru.maxLength": 1000,
+  "list.source.mru.ignoreGitIgnore": true,
+  // rg/ag
+  "list.source.grep.command": "ag",
+  "list.source.tags.command": "ctags -R .",
+  // coc-json
+  "json.enable": true,
+  "json.format.enable": true,
+  // coc-yaml
+  "yaml.enable": true,
+  "yaml.completion": true,
+  "yaml.format.enable": true,
+  "yaml.format.bracketSpacing": true,
+  // coc-prettier
+  "prettier.enable": true,
+  "prettier.prettierPath": "",
+  "coc.preferences.formatOnSaveFiletypes": [
+    "json",
+    "python",
+    "c",
+    "cpp",
+    "markdown",
+    "go"
+  ],
+  //"diagnostic.warningSign": "!!",
+  "diagnostic.messageTarget": "echo",
+  "signature.target": "echo",
+  "hover.target": "echo",
+  // coc-snippets
+  "snippets.autoTrigger": true,
+  "snippets.ultisnips.enable": false,
+  "snippets.ultisnips.directories": ["UltiSnips", "gosnippets/UltiSnips"],
+  "snippets.snipmate.enable": true,
+  "snippets.snipmate.author": "FJP",
+  // coc-translator
+  "translator.engines": ["youdao"],
+  // "translator.enableHover": true,
+  // coc-vimlsp
+  "vimlsp.diagnostic.enable": true,
+  "vimlsp.indexes.runtimepath": true,
+  "vimlsp.indexes.projectRootPatterns": [".git", "autoload", "plugin"],
+  // coc-pyright
+  "pyright.enable": true,
+  "python.pythonPath": "python",
+  "python.linting.enabled": true,
+  // coc-sh
+  "sh.enable": true,
+  // coc-clangd
+  "clangd.enabled": true,
+  "clangd.path": "clangd",
+  "clangd.checkUpdates": false,
+  "clangd.disableCompletion": false,
+  "clangd.disableDiagnostics": false,
+  "clangd.disableSnippetCompletion": false,
+  "clangd.compilationDatabasePath": ".vscode/",
+  "clangd.arguments": [
+    // compelie_commands.json 文件的目录位置(相对于工作区)
+    // "--compile-commands-dir=build",
+    // 全局补全（会自动补充头文件）
+    "--all-scopes-completion,"
+  ],
+  // coc-cmake
+  "cmake.cmakePath": "cmake",
+  "cmake.formatter": "cmake-format"
+}
+// coc-diagnostic
+// "coc.preferences.colorSupport": true,
+// "diagnostic-languageserver.enable": true,
+// "diagnostic-languageserver.filetypes": {
+//  "vim": "vint",
+//  "sh": "shellcheck",
+//  "cmake": ["cmake-lint", "cmakelint"],
+//  "systemd": "systemd-analyze"
+// },
+// "diagnostic-languageserver.formatFiletypes": {
+//   "sh": "shfmt",
+//   "python": ["black", "isort"],
+//   "lua": "lua-format",
+//   "cmake": "cmake-format",
+//   "blade": "blade-formatter"
+// },
+// coc-explorer
+// "explorer.width": 30,
+// "explorer.quitOnOpen": true,
+// coc-go
+// "go.enable": true,
