@@ -37,16 +37,21 @@ nvim -c "helptags coc.nvim/doc/ | q"
 ```
 
 ## install vimspector
+
 ```bash
 cd ~/.config/nvim/pack/vendor_fjp/opt
 wget https://github.com/puremourning/vimspector/archive/refs/tags/2254158724.tar.gz
 tar -zxvf 2254158724.tar.gz
 # curl -L <url> | tar -C $HOME/.config/nvim/pack/vendor_fjp/opt zxvf -
 # python3 install_gadget.py --all ==> VimspectorInstall
-# python3 install_gadget.py --enable-c --enable-cpp --enable-python --enable-go
+# python3 install_gadget.py --enable-go --enable-python --enable-c --enable-bash
+
+# pip3 install neovim
+# pip3 install pynvim
 ```
 
 ## alias
+
 ```bash
 #  用fzf选择task去执行
 ## nvim
@@ -56,6 +61,7 @@ alias task='~/.vim/pack/vendor_fjp/start/asynctasks.vim/bin/asynctask -f'
 ```
 
 ## 使用 Git 管理 Vim 插件
+
 ```bash
 # 初始化仓库
 mkdir -p ~/.config/nvim && cd ~/.config/nvim
@@ -77,8 +83,11 @@ git rm pack/vendor_fjp/start/vim-colorscheme-icons/
 git commit
 git push
 ```
+
 ## 附录
+
 ### 自定义插件
+
 ```bash
 # 加载
 # packadd myself
@@ -95,8 +104,28 @@ pack/vendor_fjp/opt/
     └── templates
         └── tpl.c             # 模板
 ```
-# vim 命令
-```bash
-vim --startuptime start.log test1.py # 启动速度
-# :%TOhtml                  " 保存为html
-```
+
+# vim 基础知识
+
+- `checkhealth` nvim 检查环境
+- `:options` 了解 vimrc 设置
+- `:h vimrc` 查找 vimrc 文件
+- `:h startup` 查看大致加载顺序
+- `:h key-notation` 了解按键
+- `:h jump-motions` 跳转动作
+- `:h tag-commands` tag跳转
+- `:h +feature-list` 浏览完整的功能列表
+- `:set runtimepath` 显示加载插件路径
+- `:scriptnames` 查看加载的脚本和顺序
+- `vim --startuptime start.log test1.py` 查看每一个插件的耗时
+- `vim --clean --startuptime start.log test1.py` 查看不加载这些插件耗时
+- `>G`命令会增加从当前行到文档末尾处的缩进层级
+- `gg=G`自动格式化
+- `:%TOhtml` 保存为 html
+- `line('.')`可以返回当前行号
+
+# vim Map
+- base.vim     C-x|S-x|x
+- plugins.vim  leader-x
+- coc.vim      space-x
+

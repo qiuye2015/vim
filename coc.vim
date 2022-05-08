@@ -66,9 +66,15 @@ nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
 nnoremap <silent><nowait> <space>o  :<C-u>CocList outline<cr>
 " Search workspace symbols.
 nnoremap <silent><nowait> <space>s  :<C-u>CocList -I symbols<cr>
+" Show Most Recently Used (MRU) files
 nnoremap <silent><nowait> <space>u  :<C-u>CocList -N mru -A<cr>
-" Use C to open coc config
-call SetupCommandAbbrs('C', 'CocConfig')
+" grep word under cursor with interactive mode
+nnoremap <silent> <space>w :exe 'CocList -I --input='.expand('<cword>').' grep'<CR>
+" grep current word in current buffer
+nnoremap <silent> <space>f  :exe 'CocList -I --normal --input='.expand('<cword>').' words'<CR>
+
+" call SetupCommandAbbrs('C', 'CocConfig')
+nnoremap <silent><nowait> <space>0  :CocConfig<cr>
 
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
@@ -89,14 +95,6 @@ endfunction
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
-" 开启或者刷新补全
-" Use <c-space> to trigger completion.
-if has('nvim')
-  inoremap <silent><expr> <c-space> coc#refresh()
-else
-  inoremap <silent><expr> <c-@> coc#refresh()
-endif
-
 " GoTo code navigation.
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
@@ -104,7 +102,7 @@ nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
 " Symbol renaming.
-nmap <leader>rn <Plug>(coc-rename)
+nmap <space>rn <Plug>(coc-rename)
 " Use K to show documentation in preview window.
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 
@@ -122,7 +120,7 @@ endfunction
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
 " Apply AutoFix to problem on the current line.
-nmap <leader>qf  <Plug>(coc-fix-current)
+nmap <space>qf  <Plug>(coc-fix-current)
 " Show all diagnostics.
 nnoremap <silent><nowait> <space>d  :<C-u>CocList diagnostics<cr>
 "==============================================================================
@@ -137,7 +135,7 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 "===============
 ":CocList marketplace
 ":CocList marketplace python
-nnoremap <<silent> <space>s :<C-u>CocList marketplace<cr>
+nnoremap <silent> <space>m :<C-u>CocList marketplace<cr>
 
 "===============
 " coc-lists
@@ -151,11 +149,6 @@ function! s:GrepArgs(...)
   return join(list, "\n")
 endfunction
 
-" grep word under cursor with interactive mode
-nnoremap <silent> <leader>cf :exe 'CocList -I --input='.expand('<cword>').' grep'<CR>
-" grep current word in current buffer
-nnoremap <silent> <leader>w  :exe 'CocList -I --normal --input='.expand('<cword>').' words'<CR>
-
 " mru.validate
 " tags.generate
 
@@ -165,8 +158,8 @@ nnoremap <silent> <leader>w  :exe 'CocList -I --normal --input='.expand('<cword>
 " only for: json...
 command! -nargs=0 Prettier :CocCommand prettier.forceFormatDocument
 " Formatting selected code.
-xmap <space>f  <Plug>(coc-format-selected)
-nmap <space>f  <Plug>(coc-format-selected)
+xmap <space>fs  <Plug>(coc-format-selected)
+nmap <space>fs <Plug>(coc-format-selected)
 
 augroup mygroup
   autocmd!
@@ -180,21 +173,22 @@ augroup end
 " coc-snippets
 "===============
 " 用选择的文本创建新的代码片段
-xmap <C-x>  <Plug>(coc-convert-snippet)
+" xmap <C-x>  <Plug>(coc-convert-snippet)
 
 " Use <C-j> for both expand and jump (make expand higher priority.)
-imap <C-j> <Plug>(coc-snippets-expand-jump)
+" imap <C-j> <Plug>(coc-snippets-expand-jump)
 
 " Use <C-j> for jump to next placeholder, it's default of coc.nvim
 " let g:coc_snippet_next = '<c-j>'
 " Use <C-k> for jump to previous placeholder, it's default of coc.nvim
 " let g:coc_snippet_prev = '<c-k>'
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? coc#_select_confirm() :
-      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-let g:coc_snippet_next = '<tab>'
+
+" inoremap <silent><expr> <TAB>
+"       \ pumvisible() ? coc#_select_confirm() :
+"       \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+"       \ <SID>check_back_space() ? "\<TAB>" :
+"       \ coc#refresh()
+" let g:coc_snippet_next = '<tab>'
 
 "===============
 " coc-translator
@@ -226,7 +220,11 @@ let g:markdown_fenced_languages = [
 "===============
 " coc-clangd
 "===============
+" 生成C/C++文件索引符号
+" .vscode==>coc-settings.json中的clangd.compilationDatabasePath
+nnoremap <space>g :call s:generate_compile_commands()
 " compile_commands.json
+
 " clangd.install
 " clangd.switchSourceHeader
 " clangd.symbolInfo
@@ -241,23 +239,6 @@ let g:markdown_fenced_languages = [
 " autocmd FileType go nmap gtj :CocCommand go.tags.add json<cr>
 " autocmd FileType go nmap gty :CocCommand go.tags.add yaml<cr>
 " autocmd FileType go nmap gtx :CocCommand go.tags.clear<cr>
-"
-"===============
-" coc-explorer
-"===============
-"nmap <space>n <Cmd>CocCommand explorer<CR>
-"" h 折叠
-"" l 展开
-""
-"autocmd ColorScheme *
-"  \ hi CocExplorerNormalFloatBorder guifg=#414347 guibg=#272B34
-"  \ | hi CocExplorerNormalFloat guibg=#272B34
-"  \ | hi CocExplorerSelectUI guibg=blue
-
-"autocmd BufWritePre *.go :silent call CocAction('runCommand', 'editor.action.organizeImport')
-"autocmd FileType go nmap gtj :CocCommand go.tags.add json<cr>
-"autocmd FileType go nmap gty :CocCommand go.tags.add yaml<cr>
-"autocmd FileType go nmap gtx :CocCommand go.tags.clear<cr>
 
 "===============
 " coc-yaml

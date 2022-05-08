@@ -18,25 +18,32 @@ let maplocalleader="_"
 :command! Q q
 :command! Wq wq
 :command! WQ wq
-map <leader>0 :source $MYVIMRC<CR>       " 手动加载配置文件
-map <leader>1 :set syntax=sh<CR>
-map <leader>2 :set syntax=c<CR>
-map <leader>3 :set syntax=cpp<CR>
-map <leader>4 :set syntax=python<CR>
-map <leader>5 :set syntax=cfg<CR>
-map <leader>$ :syntax sync fromstart<CR> " 重新同步一下语法着色
-map <leader>c :call ToggleCopy()<CR>
 
-map W <C-w>w
-map C :call s:generate_compile_commands()
-map R :call CompileRun()<CR>
-map tx :r !figlet
+" mapclear 取消所有:map绑定的
+map sm :source $MYVIMRC<CR>        " 手动加载vimrc配置文件
+map ss :source %<CR>               " 手动加载当前配置文件
+map sy :syntax sync fromstart<CR>  " 重新同步一下语法着色
+" syntax sync clear 清除
+" syntax sync       查看
 " 插入acscii 文字
+map tx :r !figlet
 
-nnoremap <C-n> :Lexplore<CR>
-nnoremap <leader>s :%s/\<<C-r><C-w>\>//g<left><left> " find and replace
-nnoremap <leader>nu :call <SID>NumberToggle()<CR>
-nnoremap <leader>bg :call <SID>ToggleBackground()<CR>
+" 内置文件浏览器
+nnoremap <C-e> :Lexplore<CR>
+" 替换当前单词
+nnoremap <C-g> :%s/\<<C-r><C-w>\>//g<left><left>
+" list开关
+noremap <S-L> :set list! list?<CR>
+" relativenumber开关
+nnoremap <S-m> :set rnu! rnu?<CR>
+" number关
+nnoremap <S-n> :call <SID>NumberToggle()<CR>
+" dark/light切换
+nnoremap <S-b> :call <SID>ToggleBackground()<CR>
+" 复制模式开关
+" nnoremap <S-c> :call ToggleCopy()<CR>
+" 运行单个文件c/c++/bash/go/python
+nnoremap <S-r> :call CompileRun()<CR>
 
 " remap control + arrow key to select windows
 noremap <C-Down>  <C-W>j
@@ -47,6 +54,7 @@ noremap <C-J> <C-W>j
 noremap <C-K> <C-W>k
 noremap <C-H> <C-W>h
 noremap <C-L> <C-W>l
+noremap <S-w> <C-W>w
 
 xnoremap < <gv
 xnoremap > >gv
@@ -65,13 +73,13 @@ map tn :+tabnext<CR>
 map tp :-tabnext<CR>
 
 map sr :set splitright<CR>:vsplit<CR>
-map sl :set nosplitright<CR>:vsplit<CR>
-map su :set nosplitbelow<CR>:split<CR>
 map sd :set splitbelow<CR>:split<CR>
-map <s-up> :res -5<CR>
-map <s-down> :res +5<CR>
-map <s-left> :vertical resize -5<CR>
-map <s-right> :vertical resize +5<CR>
+" map sl :set nosplitright<CR>:vsplit<CR>
+" map su :set nosplitbelow<CR>:split<CR>
+map <S-up> :res +3<CR>
+map <S-down> :res -3<CR>
+map <S-left> :vertical resize +3<CR>
+map <S-right> :vertical resize -3<CR>
 
 " zM 递归折叠所有
 " zR 递归展开所有
@@ -204,6 +212,7 @@ if has("nvim-0.5.0") || has("patch-8.1.1564")
 else
   set signcolumn=yes " 总是显示侧边栏(用于显示 mark/gitdiff/诊断信息)
 endif
+set noequalalways    " 分割窗口会减少当前窗口的尺寸,并保持其它窗口不变
 
 "==============================================================================
 " 状态栏设置
@@ -330,6 +339,9 @@ if has("autocmd")
 	autocmd BufNewFile,BufRead *.conf set syntax=cfg
     " 高亮json注释
     autocmd FileType json syntax match Comment +\/\/.\+$+
+    " 在粘贴时候，如果前边的行带有注释符号，如#、//、"等时，后边的行会自动加上注释符号
+    au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "no rm $"|endif|endif
+    autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 endif
 
 " 设置别名
@@ -413,5 +425,8 @@ augroup PythonTab
         " 否则vim会在打开py文件时自动设置成空格缩进.
         " au FileType python setlocal shiftwidth=4 tabstop=4 noexpandtab
 augroup END
-
+let g:python_host_prog  = '/usr/bin/python2'
+let g:python3_host_prog  = '/usr/bin/python2'
+" let g:loaded_python_provider = 0
+" let g:loaded_python3_provider = 0
 

@@ -60,6 +60,7 @@ let g:NERDTreeMinimalUI = 1 " 不显示帮助信息
 let g:NERDTreeChDirMode = 2
 let g:NERDTreeWinSize=24
 let NERDTreeShowHidden=1   " 可在打开时默认显示隐藏文件
+" let NERDTreeWinPos="right" " 默认为左侧
 
 " Start NERDTree when Vim is started without file arguments.
 autocmd StdinReadPre * let s:std_in=1
@@ -220,8 +221,8 @@ let g:vim_markdown_fenced_languages = ['csharp=cs'] " 屏蔽代码块语言
 
 
 " -----------------------------------------------------------------------------
-" imap <silent><script><expr> <C-J> copilot#Accept("\<CR>")
-" let g:copilot_no_tab_map = v:true
+imap <silent><script><expr> <C-J> copilot#Accept("\<CR>")
+let g:copilot_no_tab_map = v:true
 " highlight CopilotSuggestion guifg=#555555 ctermfg=8
 " :Copilot status
 " :Copilot disable
@@ -240,12 +241,13 @@ let g:vim_markdown_fenced_languages = ['csharp=cs'] " 屏蔽代码块语言
 " let g:T_AUTHOR_WEBSITE = "http://www.fjp.cn"
 " let g:T_DATE_FORMAT = "%c"
 "
-" packadd! vimspector
+packadd! vimspector
 " 加载debug插件,复用F3-F12
-nmap <m-0> :packadd vimspector<cr>
+" nmap <m-0> :packadd vimspector<cr>
 let g:vimspector_enable_mappings = 'HUMAN' " VISUAL_STUDIO
 " insert `:VimspectorInstall` to install
-let g:vimspector_install_gadgets = [ 'debugpy', 'vscode-cpptools', 'CodeLLDB', 'delve']
+" 'CodeLLDB'
+let g:vimspector_install_gadgets = [ 'delve', 'debugpy', 'vscode-cpptools', 'vscode-bash-debug']
 " let g:vimspector_base_dir=expand( '$HOME/.config/nvim/vimspector-config' )
 
 "==============================================================================

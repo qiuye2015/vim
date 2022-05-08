@@ -10,8 +10,8 @@
 " -----------------------------------------------------------------------------
 source ~/.config/nvim/base.vim
 source ~/.config/nvim/plugins.vim
-source ~/.config/nvim/coc.vim
 source ~/.config/nvim/keymap.vim
+source ~/.config/nvim/coc.vim
 
 "==============================================================================
 " 插件设置
@@ -23,5 +23,4 @@ endif
 " for s:path in split(glob('~/.config/nvim/vimrc/*.vim'), "\n")
 "     exe 'source ' . s:path
 " endfor
-
 

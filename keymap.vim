@@ -110,6 +110,53 @@ endfunction
 "--------------------------------------
 " VimspectorInstall
 
+"==============================================================================
+" 快捷键
+"==============================================================================
+
+" CTRL-]   直接在当前窗口里跳转到定义
+" CTRL-W ] 用新窗口打开并查看光标下符号的定义
+" CTRL-T   Jump to older entry in the tag stack
+" CTRL-O   Go to Older cursor position in jump list
+" CTRL-I   Go to Newer cursor position in jump list
+nnoremap <silent> <leader>u :Mru<cr>
+nnoremap <silent> <leader>p :call fzf#Open()<cr>
+nnoremap <silent> <leader>f :Ack!<Space>
+nnoremap <silent> <leader>t :TagbarToggle<cr>
+nnoremap <silent> <leader>e :NERDTreeToggle<cr>
+nnoremap <silent> <leader>n :NERDTreeFind<cr>
+nnoremap <silent> <leader>s :call SyntasticToggle()<cr>     " 打开/关闭语法检查
+nnoremap <silent> <leader>l :IndentLinesToggle<cr>          " 打开/关闭缩进线条
+nnoremap <silent> <leader>g :GitGutterToggle<cr>            " git显示
+nnoremap <silent> <leader>gf :GitGutterFold<cr>             " 折叠没有改变的行,zr展开3行
+nnoremap <silent> <leader>gb :<C-u>call gitblame#echo()<CR> " git-blame.vim
+" <vim-gitgutter> git区块之间跳转
+" nmap ]c <Plug>GitGutterNextHunk
+" nmap [c <Plug>GitGutterPrevHunk
+
+" <M-p> : Toggle Autopairs (g:AutoPairsShortcutToggle)
+" <M-e> : Fast Wrap (g:AutoPairsShortcutFastWrap)
+" <M-n> : Jump to next closed pair (g:AutoPairsShortcutJump)
+" <M-b> : BackInsert (g:AutoPairsShortcutBackInsert)
+
+" AsyncRun
+" AsyncTask
+noremap <leader>0 :AsyncTask<space>
+noremap <leader>1 :AsyncTask fjp-build<cr>               " 自定义编译
+noremap <leader>2 :AsyncTask fjp-run<cr>                 " 自定义运行
+noremap <leader>3 :AsyncTask project-init<cr>            " cmake
+noremap <leader>4 :AsyncTask project-build<cr>           " 构建项目make
+noremap <leader>5 :AsyncTask project-run<cr>             " 运行项目make run
+noremap <leader>6 :AsyncTask project-test<cr>            " 项目测试make test
+noremap <leader>7 :AsyncTask file-build<cr>              " 编译单个文件
+noremap <leader>8 :AsyncTask file-run<cr>                " 运行单个文件
+noremap <leader>9 :call asyncrun#quickfix_toggle(6)<cr>  " 打开Quickfix窗口
+" change-colorscheme
+nnoremap <silent> <F1> :RandomColorScheme<cr>
+inoremap <silent> <F1> <esc> :RandomColorScheme<cr>
+nnoremap <silent> <F2> :ShowColorScheme<cr>
+inoremap <silent> <F2> <esc> :ShowColorScheme<cr>
+" puremourning/vimspector
 " F3  停止调试
 " F4  使用相同的选项重新开始
 " F5  开始/继续调试
@@ -120,47 +167,4 @@ endfunction
 " F11 步入
 " F12 步出
 
-"==============================================================================
-" 快捷键
-"==============================================================================
-
-nnoremap <silent> <c-u> :Mru<cr>
-nnoremap <silent> <c-p> :call fzf#Open()<cr>
-nnoremap <silent> <Leader>f :Ack!<Space>
-" CTRL-]   直接在当前窗口里跳转到定义
-" CTRL-W ] 用新窗口打开并查看光标下符号的定义
-" CTRL-o   跳回之前位置
-nnoremap <silent> <leader>t :TagbarToggle<cr>
-nnoremap <silent> <leader>n :NERDTreeToggle<cr>
-nnoremap <silent> <leader>nf :NERDTreeFind<cr>
-nnoremap <silent> <leader>l :IndentLinesToggle<cr>  " 打开关闭缩进线条
-nnoremap <silent> <leader>g :GitGutterToggle<cr>
-nnoremap <silent> <leader>gf :GitGutterFold<cr> "折叠没有改变的行,zr展开3行
-nnoremap <silent> <leader>gb :<C-u>call gitblame#echo()<CR> " git-blame.vim
-"" <vim-gitgutter> git区块之间跳转
-" nmap ]c <Plug>GitGutterNextHunk
-" nmap [c <Plug>GitGutterPrevHunk
-
-" <M-p> : Toggle Autopairs (g:AutoPairsShortcutToggle)
-" <M-e> : Fast Wrap (g:AutoPairsShortcutFastWrap)
-" <M-n> : Jump to next closed pair (g:AutoPairsShortcutJump)
-" <M-b> : BackInsert (g:AutoPairsShortcutBackInsert)
-
-noremap <silent><F1> :call SyntasticToggle()<cr>            " F1：语法检查
-" AsyncRun
-" AsyncTask
-noremap <silent><F2> :AsyncTask fjp-build<cr>               " F2：自定义编译
-noremap <silent><F3> :AsyncTask fjp-run<cr>                 " F3：自定义运行
-noremap <silent><F4> :AsyncTask file-build<cr>              " F4：编译单个文件
-noremap <silent><F5> :AsyncTask file-run<cr>                " F5：运行单个文件
-noremap <silent><F6> :AsyncTask project-init<cr>
-noremap <silent><F7> :AsyncTask project-build<cr>           " F7：构建项目
-noremap <silent><F8> :AsyncTask project-run<cr>             " F8：运行项目
-noremap <silent><F9> :AsyncTask project-test<cr>            " F9：运行项目测试
-noremap <silent><F10> :call asyncrun#quickfix_toggle(6)<cr> " F10:打开Quickfix窗口
-" change-colorscheme
-nnoremap <silent> <F11> :RandomColorScheme<cr>
-inoremap <silent> <F11> <esc> :RandomColorScheme<cr>
-nnoremap <silent> <F12> :ShowColorScheme<cr>
-inoremap <silent> <F12> <esc> :ShowColorScheme<cr>
 
