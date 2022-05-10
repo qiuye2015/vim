@@ -109,6 +109,33 @@ endfunction
 " puremourning/vimspector
 "--------------------------------------
 " VimspectorInstall
+function! s:generate_vimspector_conf()
+  if empty(glob( '.vimspector.json' ))
+    if &filetype == 'c' || 'cpp'
+      !cp ~/.config/nvim/conf_vimspector/c.json ./.vimspector.json
+    elseif &filetype == 'python'
+      !cp ~/.config/nvim/conf_vimspector/python.json ./.vimspector.json
+    endif
+  endif
+  e .vimspector.json
+endfunction
+
+"--------------------------------------
+" coc-clangd
+"--------------------------------------
+" 生成C/C++文件索引符号
+" .vscode==>coc-settings.json中的clangd.compilationDatabasePath
+" compile_commands.json
+function! s:generate_compile_commands()
+    if empty(glob( 'CMakeLists.txt'))
+        echo "Can't find CMakeLists.txt"
+        return
+    endif
+    if empty(glob('.vscode'))
+        execute 'silent !mkdir .vscode'
+    endif
+    execute '!cmake -DCMAKE_BUILD_TYPE=debug -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -S . -B .vscode'
+endfunction
 
 "==============================================================================
 " 快捷键
@@ -127,7 +154,7 @@ nnoremap <silent> <leader>e :NERDTreeToggle<cr>
 nnoremap <silent> <leader>n :NERDTreeFind<cr>
 nnoremap <silent> <leader>s :call SyntasticToggle()<cr>     " 打开/关闭语法检查
 nnoremap <silent> <leader>l :IndentLinesToggle<cr>          " 打开/关闭缩进线条
-nnoremap <silent> <leader>g :GitGutterToggle<cr>            " git显示
+nnoremap <silent> <leader>gt :GitGutterToggle<cr>           " git显示
 nnoremap <silent> <leader>gf :GitGutterFold<cr>             " 折叠没有改变的行,zr展开3行
 nnoremap <silent> <leader>gb :<C-u>call gitblame#echo()<CR> " git-blame.vim
 " <vim-gitgutter> git区块之间跳转
@@ -166,5 +193,13 @@ inoremap <silent> <F2> <esc> :ShowColorScheme<cr>
 " F10 步过
 " F11 步入
 " F12 步出
+nmap <Leader>v <Plug>VimspectorBalloonEval
+xmap <Leader>v <Plug>vimspectorBalloonEval
+command! -nargs=0 Gvimspector :call s:generate_vimspector_conf()
+nnoremap <leader>d :call s:generate_vimspector_conf()
+
+" coc-clangd
+command! -nargs=0 Gcmake :call s:generate_compile_commands()
+nnoremap <leader>g :call s:generate_compile_commands()
 
 

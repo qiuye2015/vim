@@ -35,9 +35,9 @@ nnoremap <C-g> :%s/\<<C-r><C-w>\>//g<left><left>
 " list开关
 noremap <S-L> :set list! list?<CR>
 " relativenumber开关
-nnoremap <S-m> :set rnu! rnu?<CR>
+nnoremap <C-m> :set rnu! rnu?<CR>
 " number关
-nnoremap <S-n> :call <SID>NumberToggle()<CR>
+nnoremap <C-n> :call <SID>NumberToggle()<CR>
 " dark/light切换
 nnoremap <S-b> :call <SID>ToggleBackground()<CR>
 " 复制模式开关
@@ -351,32 +351,6 @@ function! SetupCommandAbbrs(from, to)
         \ .'? ("'.a:to.'") : ("'.a:from.'"))'
 endfunction
 
-" Compile function
-func! CompileRun()
-    exec "w"
-    if &filetype == 'c'
-        silent exec '!g++ % -o %<'
-        exec '!time ./%<'
-        silent exec '!rm ./%<'
-    elseif &filetype == 'cpp'
-        set splitbelow
-        silent exec "!g++ -std=c++11 % -Wall -o %<"
-        :term ./%<
-        :res -10
-    elseif &filetype == 'sh'
-        :!time bash %
-    elseif &filetype == 'python'
-        " exec '!time python %'
-        set splitbelow
-        :term python3 %
-        :res -10
-    elseif &filetype == 'go'
-        set splitbelow
-        :term go run .
-        :res -10
-    endif
-endfunc
-
 function! s:NumberToggle()
     if(&number == 1) | set nu! | set rnu! | else | set rnu | set nu | endif
 endfunction
@@ -405,17 +379,32 @@ function ToggleCopy()
     let g:copymode=!g:copymode
 endfunction
 
-function! s:generate_compile_commands()
-    if empty(glob( 'CMakeLists.txt'))
-        echo "Can't find CMakeLists.txt"
-        return
+" Compile function
+func! CompileRun()
+    exec "w"
+    if &filetype == 'c'
+        silent exec '!g++ % -o %<'
+        exec '!time ./%<'
+        silent exec '!rm ./%<'
+    elseif &filetype == 'cpp'
+        set splitbelow
+        silent exec "!g++ -std=c++11 % -Wall -o %<"
+        :term ./%<
+        :res -10
+    elseif &filetype == 'sh'
+        :!time bash %
+    elseif &filetype == 'python'
+        " exec '!time python %'
+        set splitbelow
+        :term python3 %
+        :res -10
+    elseif &filetype == 'go'
+        set splitbelow
+        :term go run .
+        :res -10
     endif
-    if empty(glob('.vscode'))
-        execute 'silent !mkdir .vscode'
-    endif
-    execute '!cmake -DCMAKE_BUILD_TYPE=debug -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -S . -B .vscode'
-endfunction
-" command! -nargs=0 Gcmake :call s:generate_compile_commands()
+endfunc
+
 "==============================================================================
 " 特定编程语言
 "==============================================================================

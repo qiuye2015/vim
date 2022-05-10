@@ -165,29 +165,9 @@ let g:asynctasks_term_pos = 'bottom'
 let g:asynctasks_term_rows = 10    " set height for the horizontal terminal split
 let g:asynctasks_term_cols = 80    " set width for vertical terminal split
 
-
 " -----------------------------------------------------------------------------
 let g:terminal_key = '<m-=>'
 let g:terminal_height = 11
-
-" -----------------------------------------------------------------------------
-let g:vimspector_enable_mappings = 'HUMAN'
-
-function! s:generate_vimspector_conf()
-  if empty(glob( '.vimspector.json' ))
-    if &filetype == 'c' || 'cpp'
-      !cp ~/.config/nvim/conf_vimspector/c.json ./.vimspector.json
-    elseif &filetype == 'python'
-      !cp ~/.config/nvim/conf_vimspector/python.json ./.vimspector.json
-    endif
-  endif
-  e .vimspector.json
-endfunction
-
-command! -nargs=0 Gvimspector :call s:generate_vimspector_conf()
-
-nmap <Leader>v <Plug>VimspectorBalloonEval
-xmap <Leader>v <Plug>vimspectorBalloonEval
 
 " -----------------------------------------------------------------------------
 let g:go_fmt_command = "goimports" " 保存时自动运行goimports;gofmt,goimports,gopls
@@ -202,7 +182,6 @@ let g:go_fmt_command = "goimports" " 保存时自动运行goimports;gofmt,goimpo
 " autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4
 
 " -----------------------------------------------------------------------------
-
 let g:cpp_class_scope_highlight = 1
 let g:cpp_member_variable_highlight = 1
 let g:cpp_class_decl_highlight = 1
@@ -218,7 +197,6 @@ let g:vim_markdown_toc_autofit = 1              " 启用TOC窗口自动拟合
 let g:vim_markdown_folding_level = 6            " 设置标题折叠级别 1-6
 let g:vim_markdown_folding_style_pythonic = 1
 let g:vim_markdown_fenced_languages = ['csharp=cs'] " 屏蔽代码块语言
-
 
 " -----------------------------------------------------------------------------
 imap <silent><script><expr> <C-J> copilot#Accept("\<CR>")
@@ -242,8 +220,6 @@ let g:copilot_no_tab_map = v:true
 " let g:T_DATE_FORMAT = "%c"
 "
 packadd! vimspector
-" 加载debug插件,复用F3-F12
-" nmap <m-0> :packadd vimspector<cr>
 let g:vimspector_enable_mappings = 'HUMAN' " VISUAL_STUDIO
 " insert `:VimspectorInstall` to install
 " 'CodeLLDB'

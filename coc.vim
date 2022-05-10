@@ -62,16 +62,16 @@ autocmd ColorScheme *
 nnoremap <silent><nowait> <space>e  :<C-u>CocList extensions<cr>
 " Show commands.
 nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
-" Find symbol of current document.
-nnoremap <silent><nowait> <space>o  :<C-u>CocList outline<cr>
-" Search workspace symbols.
-nnoremap <silent><nowait> <space>s  :<C-u>CocList -I symbols<cr>
 " Show Most Recently Used (MRU) files
 nnoremap <silent><nowait> <space>u  :<C-u>CocList -N mru -A<cr>
-" grep word under cursor with interactive mode
-nnoremap <silent> <space>w :exe 'CocList -I --input='.expand('<cword>').' grep'<CR>
 " grep current word in current buffer
 nnoremap <silent> <space>f  :exe 'CocList -I --normal --input='.expand('<cword>').' words'<CR>
+" grep word under cursor with interactive mode
+nnoremap <silent> <space>w :exe 'CocList -I --input='.expand('<cword>').' grep'<CR>
+" Search workspace symbols.
+nnoremap <silent><nowait> <space>s  :<C-u>CocList -I symbols<cr>
+" Find symbol of current document.
+nnoremap <silent><nowait> <space>o  :<C-u>CocList outline<cr>
 
 " call SetupCommandAbbrs('C', 'CocConfig')
 nnoremap <silent><nowait> <space>0  :CocConfig<cr>
@@ -220,10 +220,7 @@ let g:markdown_fenced_languages = [
 "===============
 " coc-clangd
 "===============
-" 生成C/C++文件索引符号
-" .vscode==>coc-settings.json中的clangd.compilationDatabasePath
-nnoremap <space>g :call s:generate_compile_commands()
-" compile_commands.json
+" nnoremap <space>g :call s:generate_compile_commands()
 
 " clangd.install
 " clangd.switchSourceHeader
