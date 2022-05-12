@@ -18,6 +18,7 @@ let maplocalleader="_"
 :command! Q q
 :command! Wq wq
 :command! WQ wq
+:command! Qa qa
 
 " mapclear 取消所有:map绑定的
 map sm :source $MYVIMRC<CR>        " 手动加载vimrc配置文件
@@ -276,8 +277,8 @@ if !exists("g:syntax_on")  " 只让语法高亮设置一次
     syntax enable          " 区别:syntax on会覆盖当前对语法高亮的更改
 endif
 
-set cursorline                           " 突出显示当前行
-set cursorcolumn                         " 突出显示当前列
+" set cursorline                         " 突出显示当前行
+" set cursorcolumn                       " 突出显示当前列
 set colorcolumn=80                       " 80列显示垂直线
 hi ColorColumn ctermbg=blue guibg=blue   " 垂直线颜色
 
@@ -379,6 +380,14 @@ function ToggleCopy()
     let g:copymode=!g:copymode
 endfunction
 
+" 插入模式时开启，普通模式时关闭
+autocmd InsertLeave * call ToggleCursor()
+autocmd InsertEnter * call ToggleCursor()
+function ToggleCursor() abort
+	set cursorline!
+	set cursorcolumn!
+endfunction
+
 " Compile function
 func! CompileRun()
     exec "w"
@@ -414,6 +423,9 @@ augroup PythonTab
         " 否则vim会在打开py文件时自动设置成空格缩进.
         " au FileType python setlocal shiftwidth=4 tabstop=4 noexpandtab
 augroup END
+
+let g:python_host_skip_check=1
+let g:python3_host_skip_check=1
 let g:python_host_prog  = '/usr/bin/python2'
 let g:python3_host_prog  = '/usr/bin/python2'
 " let g:loaded_python_provider = 0
