@@ -36,7 +36,7 @@ nnoremap <C-g> :%s/\<<C-r><C-w>\>//g<left><left>
 " list开关
 noremap <S-L> :set list! list?<CR>
 " relativenumber开关
-nnoremap <C-m> :set rnu! rnu?<CR>
+nnoremap <C-u> :set rnu! rnu?<CR>
 " number关
 nnoremap <C-n> :call <SID>NumberToggle()<CR>
 " dark/light切换
@@ -178,7 +178,9 @@ set foldlevelstart=99   " 打开文件是默认不折叠代码
 "                      minimal    花费额外时间来生成最小的可能差异
 "                      patience   耐心差异比较算法
 "                      histogram  直方图差异比较算法
-set diffopt+=internal,indent-heuristic,algorithm:patience
+if has("diffopt")
+    set diffopt+=internal,indent-heuristic,algorithm:patience
+endif
 
 " if &diff
 "     set diffopt+=iwhite " 限定在 vimdiff 模式,忽略白空格的变化
@@ -191,7 +193,9 @@ set diffopt+=internal,indent-heuristic,algorithm:patience
 " menuone  即使只有一个匹配,也使用弹出菜单
 " noinsert 不插入任何匹配的文本,直到用户从菜单里选择一个匹配为止
 " noselect 不自动选择菜单里的匹配,强迫用户从菜单中选择
-set completeopt=menuone,noinsert,noselect
+if has("completeopt")
+    set completeopt=menuone,noinsert,noselect
+endif
 
 "==============================================================================
 " 显示设置
@@ -210,7 +214,7 @@ set scrolloff=5    " 垂直滚动时,光标距离顶部/底部的位置
 if has("nvim-0.5.0") || has("patch-8.1.1564")
   " Recently vim can merge signcolumn and number column into one
   set signcolumn=number
-else
+elseif has("signcolumn")
   set signcolumn=yes " 总是显示侧边栏(用于显示 mark/gitdiff/诊断信息)
 endif
 set noequalalways    " 分割窗口会减少当前窗口的尺寸,并保持其它窗口不变

@@ -33,7 +33,7 @@
 " 异步运行shell指令     <skywind3000/asyncrun.vim>
 " 现代化的构建任务系统  <skywind3000/asynctasks.vim>;AsyncRun 助手
 " 封装内置终端          <skywind3000/vim-terminal-help>
-" debug工具             <puremourning/vimspecto>
+" debug工具             <puremourning/vimspector>
 
 " go开发插件            <fatih/vim-go>
 " c++高亮               <octol/vim-cpp-enhanced-highlight>
@@ -45,10 +45,12 @@
 "==============================================================================
 " 插件设置
 "==============================================================================
+if has("nvim")
 lua <<EOF
 -- Attaches to every FileType mode
 require 'colorizer'.setup()
 EOF
+endif
 " lua require'colorizer'.setup() " 同上
 
 let g:airline#extensions#tabline#enabled = 1    " 开启tab栏
@@ -209,6 +211,7 @@ let g:copilot_no_tab_map = v:true
 "------------------------------------------------------------------------------
 " 需要的时候加载插件，那就放到 `~/.vim/pack/*/opt/` 目录
 "------------------------------------------------------------------------------
+set packpath=~/.config/nvim/
 
 " packadd! myself
 " packadd! templates_load

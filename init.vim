@@ -9,6 +9,11 @@
 "
 " -----------------------------------------------------------------------------
 source ~/.config/nvim/base.vim
+
+if v:version < 800
+    finish
+endif
+
 source ~/.config/nvim/plugins.vim
 source ~/.config/nvim/keymap.vim
 source ~/.config/nvim/coc.vim
@@ -17,12 +22,6 @@ if filereadable(expand("$HOME/.vimrc.FJP")) " 判断文件是否存在
     source $HOME/.vimrc.FJP
 endif
 
-"==============================================================================
-" 插件设置
-"==============================================================================
-if v:version < 800
-    finish
-endif
 " vimrc files
 " for s:path in split(glob('~/.config/nvim/vimrc/*.vim'), "\n")
 "     exe 'source ' . s:path
