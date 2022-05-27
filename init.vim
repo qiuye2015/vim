@@ -10,17 +10,14 @@
 " -----------------------------------------------------------------------------
 source ~/.config/nvim/base.vim
 
-if v:version < 800
-    finish
-endif
+if v:version < 800 | finish | endif
 
 source ~/.config/nvim/plugins.vim
 source ~/.config/nvim/keymap.vim
 source ~/.config/nvim/coc.vim
 
-if filereadable(expand("$HOME/.vimrc.FJP")) " 判断文件是否存在
-    source $HOME/.vimrc.FJP
-endif
+" 判断文件是否存在
+if filereadable(expand("$HOME/.vimrc.FJP")) | source $HOME/.vimrc.FJP | endif
 
 " vimrc files
 " for s:path in split(glob('~/.config/nvim/vimrc/*.vim'), "\n")

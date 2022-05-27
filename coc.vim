@@ -173,7 +173,7 @@ augroup end
 " coc-snippets
 "===============
 " 用选择的文本创建新的代码片段
-" xmap <C-x>  <Plug>(coc-convert-snippet)
+xmap <space>x  <Plug>(coc-convert-snippet)
 
 " Use <C-j> for both expand and jump (make expand higher priority.)
 " imap <C-j> <Plug>(coc-snippets-expand-jump)

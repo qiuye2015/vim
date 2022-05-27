@@ -146,6 +146,7 @@ endfunction
 " CTRL-T   Jump to older entry in the tag stack
 " CTRL-O   Go to Older cursor position in jump list
 " CTRL-I   Go to Newer cursor position in jump list
+nmap     <silent> <leader>/ gcc
 nnoremap <silent> <leader>u :Mru<cr>
 nnoremap <silent> <leader>p :call fzf#Open()<cr>
 nnoremap <silent> <leader>f :Ack!<Space>

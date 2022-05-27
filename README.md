@@ -22,7 +22,7 @@ cp config .git/config
 ## install
 
 - fzf
-- ag/ack
+- ag/ack `sudo yum install epel-release.noarch the_silver_searcher`
 - universal-ctags
 
 ## install Coc
@@ -115,8 +115,6 @@ pack/vendor_fjp/opt/
 - `:h jump-motions` 跳转动作
 - `:h tag-commands` tag跳转
 - `:h +feature-list` 浏览完整的功能列表
-- `:set runtimepath` 显示加载插件路径
-- `:scriptnames` 查看加载的脚本和顺序
 - `vim --startuptime start.log test1.py` 查看每一个插件的耗时
 - `vim --clean --startuptime start.log test1.py` 查看不加载这些插件耗时
 - `>G`命令会增加从当前行到文档末尾处的缩进层级
@@ -129,3 +127,21 @@ pack/vendor_fjp/opt/
 - plugins.vim  leader-x
 - coc.vim      space-x
 
+# 环境变量
+```bash
+:echo $HOME         " 用户根目录"
+:echo $VIM          " Vim 程序安装目录"
+:echo $VIMRUNTIME   " Vim 程序位置"
+:echo $MYVIMRC      " .vimrc 文件位置"
+```
+# Vim 信息
+```bash
+:version            " 版本信息和加载 vimrc 顺序等信息"
+:scriptnames        " 查看 script 脚本的加载顺序"
+:set runtimepath?   " 显示 script 搜索路径
+:messages           " 查看 echom 打印信息"
+:function           " 查看加载的 function 列表"
+:set all            " 查看 Vim 所有变量"
+:set                " 查看 Vim 所有与系统不同的变量"
+:set variable?      " 显示指定 Vim 变量的当前值
+```

@@ -47,7 +47,7 @@
   "hover.target": "echo",
   // coc-snippets
   "snippets.autoTrigger": true,
-  "snippets.ultisnips.enable": false,
+  "snippets.ultisnips.enable": true,
   "snippets.ultisnips.directories": ["UltiSnips", "gosnippets/UltiSnips"],
   "snippets.snipmate.enable": true,
   "snippets.snipmate.author": "FJP",
@@ -76,7 +76,7 @@
     // compelie_commands.json 文件的目录位置(相对于工作区)
     // "--compile-commands-dir=build",
     // 全局补全（会自动补充头文件）
-    "--all-scopes-completion,"
+    "--all-scopes-completion"
   ],
   // coc-cmake
   "cmake.cmakePath": "cmake",
