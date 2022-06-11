@@ -282,10 +282,10 @@ if !exists("g:syntax_on")  " 只让语法高亮设置一次
     syntax enable          " 区别:syntax on会覆盖当前对语法高亮的更改
 endif
 
-" set cursorline                         " 突出显示当前行
-" set cursorcolumn                       " 突出显示当前列
-set colorcolumn=80                       " 80列显示垂直线
-hi ColorColumn ctermbg=blue guibg=blue   " 垂直线颜色
+set cursorline                         " 突出显示当前行
+set cursorcolumn                       " 突出显示当前列
+" set colorcolumn=100                      " 100列显示垂直线
+" hi ColorColumn ctermbg=blue guibg=blue   " 垂直线颜色
 
 " 设置颜色主题,会在所有 runtimepaths 的 colors 目录寻找同名配置
 " colorscheme pablo

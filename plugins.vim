@@ -139,8 +139,8 @@ let g:syntastic_always_populate_loc_list = 1 " 总是打开Location List窗口
 " 1表示自动打开自动关闭,
 " 2表示发现错误时不自动打开,当修正以后没有再发现错误时自动关闭(默认值)
 " 3表示自动打开,但不自动关闭
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1  " 是否在打开文件时检查
+let g:syntastic_auto_loc_list = 0
+let g:syntastic_check_on_open = 0  " 是否在打开文件时检查
 let g:syntastic_check_on_wq = 0    " 是否在保存文件后检查,卡顿,置为1
 let g:syntastic_error_symbol='✗'   " 设置错误符号
 let g:syntastic_warning_symbol='⚠' " 设置警告符号
