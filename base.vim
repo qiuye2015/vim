@@ -32,13 +32,13 @@ map tx :r !figlet
 " 内置文件浏览器
 nnoremap <C-e> :Lexplore<CR>
 " 替换当前单词
-nnoremap <C-g> :%s/\<<C-r><C-w>\>//g<left><left>
+nnoremap <C-s> :%s/\<<C-r><C-w>\>//g<left><left>
 " list开关
-noremap <S-L> :set list! list?<CR>
+noremap <S-l> :set list! list?<CR>
 " relativenumber开关
-nnoremap <C-u> :set rnu! rnu?<CR>
+nnoremap <C-i> :set rnu! rnu?<CR>
 " number关
-nnoremap <C-n> :call <SID>NumberToggle()<CR>
+nnoremap <S-m> :call <SID>NumberToggle()<CR>
 " dark/light切换
 nnoremap <S-b> :call <SID>ToggleBackground()<CR>
 " 复制模式开关
@@ -82,6 +82,12 @@ map <S-down> :res -3<CR>
 map <S-left> :vertical resize +3<CR>
 map <S-right> :vertical resize -3<CR>
 
+map <C-n> :cnext<CR>  " :cnext only works for quickfix list; :lnext for location lists
+map <C-m> :cprevious<CR>
+nnoremap <C-a> :cclose<CR>
+" 复制当前到行尾的内容
+nnoremap Y y$
+
 " zM 递归折叠所有
 " zR 递归展开所有
 
@@ -115,6 +121,7 @@ set backspace=indent,eol,start     " 插入状态使用Backspace或者Delete删�
 "set backspace=2 同上; indent缩进,eol行尾,start刚开始插入
 "
 set autoread                       " 文件在Vim之外修改过，自动重新读入
+set autowrite                      " 设置自动保存内容
 set hidden                         " 无需保存文件即可在 buffers 缓冲区之间切换
 set helplang=cn                    " 设置中文帮助
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
@@ -317,6 +324,19 @@ elseif (!has('gui_running')) && has('terminal') && has('patch-8.0.1200')
     set t_SH=
 endif
 
+" Enable to copy to clipboard for operations like yank, delete, change and put
+" http://stackoverflow.com/questions/20186975/vim-mac-how-to-copy-to-clipboard-without-pbcopy
+if has('unnamedplus')
+  set clipboard^=unnamed
+  set clipboard^=unnamedplus
+endif
+
+" " This enables us to undo files even if you exit Vim.
+" if has('persistent_undo')
+"   set undofile
+"   set undodir=~/.config/nvim/tmp/undo/
+" endif
+
 "==============================================================================
 " netrw
 "==============================================================================
@@ -348,6 +368,8 @@ if has("autocmd")
     " 在粘贴时候，如果前边的行带有注释符号，如#、//、"等时，后边的行会自动加上注释符号
     au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "no rm $"|endif|endif
     autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+    " Enter automatically into the files directory
+    autocmd BufEnter * silent! lcd %:p:h
 endif
 
 " 设置别名

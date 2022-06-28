@@ -34,6 +34,7 @@
 " 现代化的构建任务系统  <skywind3000/asynctasks.vim>;AsyncRun 助手
 " 封装内置终端          <skywind3000/vim-terminal-help>
 " debug工具             <puremourning/vimspector>
+" 单行多行代码转换      <AndrewRadev/splitjoin.vim>
 
 " go开发插件            <fatih/vim-go>
 " c++高亮               <octol/vim-cpp-enhanced-highlight>
@@ -121,6 +122,18 @@ let g:gutentags_auto_add_gtags_cscope = 0
 " -----------------------------------------------------------------------------
 let g:AutoPairsFlyMode = 1
 
+" " -----------------------------------------------------------------------------
+let g:indentLine_setColors = 1
+let g:indentLine_color_term = 239
+let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+" let g:indentLine_setConceal = 0
+" 禁用隐藏(可以在其JSON文件中看到引号)
+let g:vim_json_conceal=0
+let g:markdown_syntax_conceal=0
+" Background (Vim, GVim)
+" let g:indentLine_bgcolor_term = 202
+" let g:indentLine_bgcolor_gui = '#FF5F00'
+
 " -----------------------------------------------------------------------------
 if executable('ag') " 如果有ag的情况下,使用ag而不是使用ack
   let g:ackprg = 'ag --vimgrep'
@@ -172,16 +185,39 @@ let g:terminal_key = '<m-=>'
 let g:terminal_height = 11
 
 " -----------------------------------------------------------------------------
+" vim-go
 let g:go_fmt_command = "goimports" " 保存时自动运行goimports;gofmt,goimports,gopls
+let g:go_fmt_autosave = 1
+let g:go_autodetect_gopath = 1
 
-" let g:go_fmt_fail_silently = 0     " quickfix列表中显示错误信息,1为关闭显示
-" let g:go_highlight_types = 1       " 0为有限的Go语法高亮,太卡设为0
-" let g:go_highlight_functions = 1
-" let g:go_highlight_function_calls = 1
+let g:go_metalinter_command = "golangci-lint run"
+let g:go_metalinter_enabled = ['vet', 'errcheck', 'staticcheck', 'gosimple']
+" let g:go_metalinter_autosave = 1
+" let g:go_metalinter_autosave_enabled = ['vet', 'revive']
+" let g:go_metalinter_deadline = "5s"
+
+let g:go_def_mode = 'godef'           " default guru
+let g:go_decls_includes = "func,type" " default
+
+let g:go_list_type = "quickfix"
+let g:go_list_height = 6
+
+let g:go_auto_sameids = 1          " 高亮当前变量
+let g:go_auto_type_info = 1        " 自动显示函数形参和返回值
+let g:go_addtags_transform = "camelcase"
+
+let g:go_fmt_fail_silently = 0     " quickfix列表中显示错误信息,1为关闭显示
+let g:go_highlight_types = 1       " 0为有限的Go语法高亮,太卡设为0
+let g:go_highlight_fields = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_function_calls = 1
 " let g:go_highlight_operators = 1
-" let g:go_highlight_extra_types = 1
-" let g:go_highlight_build_constraints = 1
-" autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4
+let g:go_highlight_generate_tags = 1
+let g:go_highlight_extra_types = 1
+let g:go_highlight_build_constraints = 1
+
+let g:go_test_timeout = '10s'
+let g:go_textobj_include_function_doc = 1 " 函数声明包含注释;daf时包含注释
 
 " -----------------------------------------------------------------------------
 let g:cpp_class_scope_highlight = 1

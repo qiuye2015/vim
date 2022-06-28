@@ -16,9 +16,6 @@
 [submodule "pack/vendor_fjp/start/vim-commentary"]
 	path = pack/vendor_fjp/start/vim-commentary
 	url = https://gitee.com/qiuye_dlmu/vim-commentary
-[submodule "pack/vendor_fjp/start/auto-pairs"]
-	path = pack/vendor_fjp/start/auto-pairs
-	url = https://gitee.com/qiuye_dlmu/auto-pairs
 [submodule "pack/vendor_fjp/start/indentLine"]
 	path = pack/vendor_fjp/start/indentLine
 	url = https://gitee.com/qiuye_dlmu/indentLine
@@ -85,3 +82,9 @@
 [submodule "pack/vendor_fjp/start/vim-terminal-help"]
 	path = pack/vendor_fjp/start/vim-terminal-help
 	url = https://gitee.com/qiuye_dlmu/vim-terminal-help
+[submodule "pack/vendor_fjp/start/splitjoin"]
+	path = pack/vendor_fjp/start/splitjoin
+	url = https://github.com/AndrewRadev/splitjoin.vim
+[submodule "pack/vendor_fjp/start/vim-devicons"]
+	path = pack/vendor_fjp/start/vim-devicons
+	url = https://github.com/ryanoasis/vim-devicons

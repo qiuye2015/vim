@@ -24,7 +24,6 @@ let g:coc_start_at_startup = 1     " 禁止在vim启动时启动coc服务;手动
 
 " 设置需要安装的插件，coc会检测其中未安装的插件在vim 启动后使用异步方式进行安装
 " \'coc-explorer',
-" \'coc-pairs',
 " \'coc-go',
 " \'coc-diagnostic',
 " \'coc-git',
@@ -35,6 +34,7 @@ let g:coc_global_extensions = [
             \'coc-json',
             \'coc-yaml',
             \'coc-prettier',
+            \'coc-pairs',
             \'coc-snippets',
             \'coc-translator',
             \'coc-vimlsp',

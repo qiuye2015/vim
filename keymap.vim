@@ -137,6 +137,19 @@ function! s:generate_compile_commands()
     execute '!cmake -DCMAKE_BUILD_TYPE=debug -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -S . -B .vscode'
 endfunction
 
+"--------------------------------------
+" vim-go
+"--------------------------------------
+" run :GoBuild or :GoTestCompile based on the go file
+function! s:build_go_files()
+  let l:file = expand('%')
+  if l:file =~# '^\f\+_test\.go$'
+    call go#test#Test(0, 1)
+  elseif l:file =~# '^\f\+\.go$'
+    call go#cmd#Build(0)
+  endif
+endfunction
+
 "==============================================================================
 " 快捷键
 "==============================================================================
@@ -153,7 +166,7 @@ nnoremap <silent> <leader>f :Ack!<Space>
 nnoremap <silent> <leader>t :TagbarToggle<cr>
 nnoremap <silent> <leader>e :NERDTreeToggle<cr>
 nnoremap <silent> <leader>n :NERDTreeFind<cr>
-nnoremap <silent> <leader>s :call SyntasticToggle()<cr>     " 打开/关闭语法检查
+nnoremap <silent> <leader>a :call SyntasticToggle()<cr>     " 打开/关闭语法检查
 nnoremap <silent> <leader>l :IndentLinesToggle<cr>          " 打开/关闭缩进线条
 nnoremap <silent> <leader>gt :GitGutterToggle<cr>           " git显示
 nnoremap <silent> <leader>gf :GitGutterFold<cr>             " 折叠没有改变的行,zr展开3行
@@ -194,13 +207,90 @@ inoremap <silent> <F2> <esc> :ShowColorScheme<cr>
 " F10 步过
 " F11 步入
 " F12 步出
-nmap <Leader>v <Plug>VimspectorBalloonEval
-xmap <Leader>v <Plug>vimspectorBalloonEval
+" mnemonic 'di' = 'debug inspect' (pick your own, if you prefer!)
+" for normal mode - the word under the cursor
+nmap <Leader>di <Plug>VimspectorBalloonEval
+" for visual mode, the visually selected text
+xmap <Leader>di <Plug>VimspectorBalloonEval
 command! -nargs=0 Gvimspector :call s:generate_vimspector_conf()
-nnoremap <leader>d :call s:generate_vimspector_conf()
+nnoremap <leader>gd :call s:generate_vimspector_conf()
 
 " coc-clangd
 command! -nargs=0 Gcmake :call s:generate_compile_commands()
-nnoremap <leader>g :call s:generate_compile_commands()
+nnoremap <leader>gc :call s:generate_compile_commands()
+
+" splitjoin.vim
+" gS                           将一行拆分为多行
+" gJ                           将块连接到单行语句中(光标位于块的第一行)
+
+" vim-go
+" :GoRun %                     运行文件
+" :GoRun                       运行包
+" :GoBuild                     编译
+" :GoBuild!                    编译-禁止自动跳转到第一个错误位置
+" :GoTest                      测试
+" :GoTestFunc                  测试当前鼠标所在函数
+" :GoCoverage                  测试覆盖率
+" :GoImports
+" :GoMetaLinter
+" :GoRename newName            重命名
+" :GoAddTags json              给结构体增加tag
+" :GoImpl                      当前结构体要实现哪个接口
+" :GoImpl b *B fmt.Stringer    实现stringer接口
+" :GoDoc                       显示文档
+" :GoInfo                      显示函数的形参和返回值
+" :GoDef                       gd or ctrl-] 跳入; ctrl-t 跳回
+" :GoDecls                     显示所有类型和函数声明
+" :GoDeclsDir                  显示整个目录下文件所有类型和函数声明
+" :GoFreevars                  重构提取函数
+
+" if/af                    if函数内部，af整个函数
+" dif                      删除函数体
+" vaf                      选择整个函数
+" ]]                       -> jump to next function
+" [[                       -> jump to previous function
+
+" Open :GoDeclsDir with ctrl-g
+nmap <C-g> :GoDeclsDir<cr>
+imap <C-g> <esc>:<C-u>GoDeclsDir<cr>
+
+augroup go
+  autocmd!
+
+  " Show by default 4 spaces for a tab
+  autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4
+
+  " :GoBuild and :GoTestCompile
+  autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
+
+  " :GoTest
+  " autocmd FileType go nmap <leader>t  <Plug>(go-test)
+
+  " :GoRun
+  autocmd FileType go nmap <leader>r  <Plug>(go-run)
+
+  " :GoDoc
+  autocmd FileType go nmap <Leader>d <Plug>(go-doc)
+
+  " :GoCoverageToggle
+  autocmd FileType go nmap <Leader>c <Plug>(go-coverage-toggle)
+
+  " :GoInfo
+  autocmd FileType go nmap <Leader>i <Plug>(go-info)
+
+  " :GoMetaLinter
+  autocmd FileType go nmap <Leader>m <Plug>(go-metalinter)
+
+  " :GoDef but opens in a vertical split
+  autocmd FileType go nmap <Leader>v <Plug>(go-def-vertical)
+  " :GoDef but opens in a horizontal split
+  autocmd FileType go nmap <Leader>s <Plug>(go-def-split)
+
+  " :GoAlternate  commands :A, :AV, :AS and :AT
+  autocmd Filetype go command! -bang A call go#alternate#Switch(<bang>0, 'edit')
+  autocmd Filetype go command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
+  autocmd Filetype go command! -bang AS call go#alternate#Switch(<bang>0, 'split')
+  autocmd Filetype go command! -bang AT call go#alternate#Switch(<bang>0, 'tabe')
+augroup END
 
 
