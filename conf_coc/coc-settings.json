@@ -41,9 +41,9 @@
     "markdown",
     "go"
   ],
+  "diagnostic.displayByAle": true,
   //"diagnostic.warningSign": "!!",
   "diagnostic.messageTarget": "echo",
-  "diagnostic.displayByAle": true,
   "signature.target": "echo",
   "hover.target": "echo",
   // coc-snippets

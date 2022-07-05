@@ -30,21 +30,19 @@ map sy :syntax sync fromstart<CR>  " 重新同步一下语法着色
 map tx :r !figlet
 
 " 内置文件浏览器
-nnoremap <C-e> :Lexplore<CR>
+nnoremap <C-E> :Lexplore<CR>
 " 替换当前单词
-nnoremap <C-s> :%s/\<<C-r><C-w>\>//g<left><left>
-" list开关
-noremap <S-l> :set list! list?<CR>
-" relativenumber开关
-nnoremap <C-i> :set rnu! rnu?<CR>
-" number关
-nnoremap <S-m> :call <SID>NumberToggle()<CR>
+nnoremap <C-S> :%s/\<<C-r><C-w>\>//g<left><left>
 " dark/light切换
-nnoremap <S-b> :call <SID>ToggleBackground()<CR>
+nnoremap <S-B> :call <SID>ToggleBackground()<CR>
 " 复制模式开关
-" nnoremap <S-c> :call ToggleCopy()<CR>
+nnoremap <S-C> :call ToggleCopy()<CR>
+" list开关
+nnoremap <S-L> :set list! list?<CR>
+" number关
+nnoremap <S-M> :call <SID>NumberToggle()<CR>
 " 运行单个文件c/c++/bash/go/python
-nnoremap <S-r> :call CompileRun()<CR>
+nnoremap <S-R> :call CompileRun()<CR>
 
 " remap control + arrow key to select windows
 noremap <C-Down>  <C-W>j
@@ -55,7 +53,7 @@ noremap <C-J> <C-W>j
 noremap <C-K> <C-W>k
 noremap <C-H> <C-W>h
 noremap <C-L> <C-W>l
-noremap <S-w> <C-W>w
+noremap <C-W> <C-W>w
 
 xnoremap < <gv
 xnoremap > >gv
@@ -82,9 +80,9 @@ map <S-down> :res -3<CR>
 map <S-left> :vertical resize +3<CR>
 map <S-right> :vertical resize -3<CR>
 
-map <C-n> :cnext<CR>  " :cnext only works for quickfix list; :lnext for location lists
-map <C-m> :cprevious<CR>
-nnoremap <C-a> :cclose<CR>
+nnoremap <C-N> :cnext<CR>  " :cnext only works for quickfix list; :lnext for location lists
+nnoremap <C-P> :cprevious<CR>
+nnoremap <C-Q> :cclose<bar>lclose<cr>
 " 复制当前到行尾的内容
 nnoremap Y y$
 
@@ -457,4 +455,3 @@ let g:python_host_prog  = '/usr/bin/python2'
 let g:python3_host_prog  = '/usr/bin/python3'
 " let g:loaded_python_provider = 0
 " let g:loaded_python3_provider = 0
-

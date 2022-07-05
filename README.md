@@ -71,7 +71,7 @@ git init
 git submodule add https://github.com/lvht/mru pack/vendor_fjp/start/mru
 
 # 更新指定插件
-git submodule update --init --remote pack/vendor/start/mru
+git submodule update --init --remote pack/vendor_fjp/start/mru
 
 # 更新所有插件
 git submodule update --init --remote
@@ -113,7 +113,7 @@ pack/vendor_fjp/opt/
 - `:h startup` 查看大致加载顺序
 - `:h key-notation` 了解按键
 - `:h jump-motions` 跳转动作
-- `:h tag-commands` tag跳转
+- `:h tag-commands` tag 跳转
 - `:h +feature-list` 浏览完整的功能列表
 - `vim --startuptime start.log test1.py` 查看每一个插件的耗时
 - `vim --clean --startuptime start.log test1.py` 查看不加载这些插件耗时
@@ -123,18 +123,22 @@ pack/vendor_fjp/opt/
 - `line('.')`可以返回当前行号
 
 # vim Map
-- base.vim     C-x|S-x|x
-- plugins.vim  leader-x
-- coc.vim      space-x
+
+- base.vim C-x|S-x|x
+- plugins.vim leader-x
+- coc.vim space-x
 
 # 环境变量
+
 ```bash
 :echo $HOME         " 用户根目录"
 :echo $VIM          " Vim 程序安装目录"
 :echo $VIMRUNTIME   " Vim 程序位置"
 :echo $MYVIMRC      " .vimrc 文件位置"
 ```
+
 # Vim 信息
+
 ```bash
 :version            " 版本信息和加载 vimrc 顺序等信息"
 :scriptnames        " 查看 script 脚本的加载顺序"

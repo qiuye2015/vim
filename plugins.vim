@@ -27,7 +27,7 @@
 " 模糊搜索              <epii1/fzf>是<junegunn/fzf>的精简版,同ctrlp
 " 全局搜索文件          <mileszs/ack.vim>
 "
-" 语法检查              <vim-syntastic/syntastic>,ale性能更好
+" 语法检查              <dense-analysis/ale>
 " 快速注释代码          <tpope/vim-commentary>,同tcomment_vim,nerdcommenter
 " 代码片段              <honza/vim-snippets>
 " 异步运行shell指令     <skywind3000/asyncrun.vim>
@@ -59,6 +59,94 @@ let g:airline#extensions#tabline#enabled = 1    " 开启tab栏
 " let g:airline_theme = 'solarized'  " AirlineTheme simple
 
 " -----------------------------------------------------------------------------
+" fzf settings
+" An action can be a reference to a function that processes selected lines
+function! s:build_quickfix_list(lines)
+  call setqflist(map(copy(a:lines), '{ "filename": v:val }'))
+  copen
+  cc
+endfunction
+
+" This is the default extra key bindings
+let g:fzf_action = {
+            \ 'ctrl-q': function('s:build_quickfix_list'),
+            \ 'ctrl-t': 'tab split',
+            \ 'ctrl-x': 'split',
+            \ 'ctrl-v': 'vsplit' }
+
+" See `man fzf-tmux` for available options
+if exists('$TMUX')
+  let g:fzf_layout = { 'tmux': '-p90%,60%' }
+else
+  " let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
+  let g:fzf_layout = { 'down': '~40%' }  " Default fzf layout
+endif
+
+" Customize fzf colors to match your color scheme
+let g:fzf_colors =
+          \ { 'fg':      ['fg', 'Normal'],
+            \ 'bg':      ['bg', 'Normal'],
+            \ 'hl':      ['fg', 'Comment'],
+            \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+            \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+            \ 'hl+':     ['fg', 'Statement'],
+            \ 'info':    ['fg', 'PreProc'],
+            \ 'prompt':  ['fg', 'Conditional'],
+            \ 'pointer': ['fg', 'Exception'],
+            \ 'marker':  ['fg', 'Keyword'],
+            \ 'spinner': ['fg', 'Label'],
+            \ 'header':  ['fg', 'Comment'] }
+
+" Enable per-command history.
+" CTRL-N and CTRL-P will be automatically bound to next-history and
+" previous-history instead of down and up. If you don't like the change,
+" explicitly bind the keys to down and up in your $FZF_DEFAULT_OPTS.
+let g:fzf_history_dir = '~/.local/share/fzf-history'
+
+" This is the default option:
+"   - Preview window on the right with 50% width
+"   - CTRL-/ will toggle preview window.
+" - Note that this array is passed as arguments to fzf#vim#with_preview function.
+" - To learn more about preview window options, see `--preview-window` section of `man fzf`.
+let g:fzf_preview_window = ['right:50%', 'ctrl-/']
+
+" Preview window on the upper side of the window with 40% height,
+" hidden by default, ctrl-/ to toggle
+" let g:fzf_preview_window = ['up:40%:hidden', 'ctrl-/']
+
+" Empty value to disable preview window altogether
+" let g:fzf_preview_window = []
+
+  " Automatic rename of tmux window
+if exists('$TMUX') && !exists('$NORENAME')
+  au BufEnter * if empty(&buftype) | call system('tmux rename-window '.expand('%:t:S')) | endif
+  au VimLeave * call system('tmux set-window automatic-rename on')
+endif
+
+let $FZF_DEFAULT_OPTS .= ' --inline-info'
+
+command! -nargs=1 Count execute printf('%%s/%s//gn', escape(<q-args>, '/')) | normal! ``
+
+" ----------------------------------------------------------------------------
+" SaveMacro / LoadMacro
+" ----------------------------------------------------------------------------
+function! s:save_macro(name, file)
+  let content = eval('@'.a:name)
+  if !empty(content)
+    call writefile(split(content, "\n"), a:file)
+    echom len(content) . " bytes save to ". a:file
+  endif
+endfunction
+command! -nargs=* SaveMacro call <SID>save_macro(<f-args>)
+
+function! s:load_macro(file, name)
+  let data = join(readfile(a:file), "\n")
+  call setreg(a:name, data, 'c')
+  echom "Macro loaded to @". a:name
+endfunction
+command! -nargs=* LoadMacro call <SID>load_macro(<f-args>)
+
+
 let g:NERDTreeMinimalUI = 1 " 不显示帮助信息
 let g:NERDTreeChDirMode = 2
 let g:NERDTreeWinSize=24
@@ -120,9 +208,10 @@ endif
 let g:gutentags_auto_add_gtags_cscope = 0
 
 " -----------------------------------------------------------------------------
-let g:AutoPairsFlyMode = 1
+" <jiangmiao/auto-pairs>
+let g:AutoPairsFlyMode = 0 " 1 插入右括号不生效，会直接跳转的下一个右括号
 
-" " -----------------------------------------------------------------------------
+" -----------------------------------------------------------------------------
 let g:indentLine_setColors = 1
 let g:indentLine_color_term = 239
 let g:indentLine_char_list = ['|', '¦', '┆', '┊']
@@ -135,34 +224,61 @@ let g:markdown_syntax_conceal=0
 " let g:indentLine_bgcolor_gui = '#FF5F00'
 
 " -----------------------------------------------------------------------------
-if executable('ag') " 如果有ag的情况下,使用ag而不是使用ack
-  let g:ackprg = 'ag --vimgrep'
-endif
-" 加上!，禁止跳到第一个搜索结果; cnoreabbrev 缩写
-cnoreabbrev Ack Ack!
-let g:ackhighlight = 1 " 高亮搜索关键词
+let g:ale_linters_explicit = 1           " 置1 除g:ale_linters指定，其他不可用
+" \    'go': ['golangci-lint','golint'],
+let g:ale_linters = {
+\    'bash': ['shellcheck'],
+\    'python': ['pylint'],
+\    'c': ['cppcheck','clang', 'gcc'],
+\    'cpp': ['cppcheck','clang','g++'],
+\    'rust': ['rustc', 'rls'],
+\    'gitcommit': ['gitlint'],
+\    'json': ['prettier'],
+\    'yaml': ['actionlint'],
+\    'thrift': ['thriftcheck'],
+\    'proto': ['buf-lint', 'protoc-gen-lint', 'protolint'],
+\}
+" sudo yum install cppcheck
 
-" -----------------------------------------------------------------------------
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1 " 总是打开Location List窗口
-" syntastic_auto_loc_list 自动打开Locaton List
-" 0表示关闭自动打开和自动关闭,
-" 1表示自动打开自动关闭,
-" 2表示发现错误时不自动打开,当修正以后没有再发现错误时自动关闭(默认值)
-" 3表示自动打开,但不自动关闭
-let g:syntastic_auto_loc_list = 0
-let g:syntastic_check_on_open = 0  " 是否在打开文件时检查
-let g:syntastic_check_on_wq = 0    " 是否在保存文件后检查,卡顿,置为1
-let g:syntastic_error_symbol='✗'   " 设置错误符号
-let g:syntastic_warning_symbol='⚠' " 设置警告符号
-" 让syntastic支持C++11
-" let g:syntastic_cpp_compiler = 'clang++'
-" let g:syntastic_cpp_compiler_options = '-std=c++11 -stdlib=libc++'
-let g:syntastic_cpp_checkers = ['gcc']
-let g:syntastic_cpp_compiler = 'g++'
-let g:syntastic_cpp_compiler_options = "-std=c++11 -Wall -Wextra -Wpedantic"
+let g:ale_fix_on_save = 1                " Set this variable to 1 to fix files when you save them.
+let g:ale_fixers = {
+\   '*': ['remove_trailing_lines', 'trim_whitespace'],
+\   'proto': ['buf-format', 'protolint'],
+\}
+
+let g:ale_lint_on_text_changed = 'never'  " run lint only on saving a file  [normal]
+let g:ale_lint_on_insert_leave = 0
+let g:ale_lint_on_enter = 0               " 打开文件时不进行检查
+
+" echo message
+" %s is the error message itself
+" %linter% is the linter name
+" %severity is the severity type
+let g:ale_echo_msg_error_str = 'E'
+let g:ale_echo_msg_warning_str = 'W'
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+
+let g:ale_set_highlights = 0              " to disabling highlighting
+let g:ale_set_loclist = 0                 " use quickfix list instead of the loclist
+let g:ale_set_quickfix = 1
+let g:ale_disable_lsp = 1                 " 禁用lsp,使用coc.nvim的lsp
+" let g:ale_sign_column_always = 1
+let g:ale_sign_error = '>>'
+let g:ale_sign_warning = '--'
+" let g:ale_sign_error = '✗'
+" let g:ale_sign_warning = '⚡
+highlight clear ALEErrorSign              " 清除错误标志的高亮
+highlight clear ALEWarningSign
+
+let g:ale_c_gcc_options = '-Wall -O2 -std=c99
+            \ -I .
+            \ -I /usr/include'
+let g:ale_cpp_gcc_options = '-Wall -O2 -std=c++11
+            \ -I .
+            \ -I /usr/include'
+"            \ -I $HOME/local/gcc-5.4.0/include/c++/5.4.0
+let g:ale_c_cppcheck_options = ''
+let g:ale_cpp_cppcheck_options = ''
 
 " -----------------------------------------------------------------------------
 " automatically open quickfix window when AsyncRun command is executed
@@ -237,7 +353,6 @@ let g:vim_markdown_folding_style_pythonic = 1
 let g:vim_markdown_fenced_languages = ['csharp=cs'] " 屏蔽代码块语言
 
 " -----------------------------------------------------------------------------
-imap <silent><script><expr> <C-J> copilot#Accept("\<CR>")
 let g:copilot_no_tab_map = v:true
 " highlight CopilotSuggestion guifg=#555555 ctermfg=8
 " :Copilot status
@@ -268,4 +383,3 @@ let g:vimspector_install_gadgets = [ 'delve', 'debugpy', 'vscode-cpptools', 'vsc
 "==============================================================================
 " END
 "==============================================================================
-

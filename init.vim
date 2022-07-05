@@ -24,3 +24,10 @@ if filereadable(expand("$HOME/.vimrc.FJP")) | source $HOME/.vimrc.FJP | endif
 "     exe 'source ' . s:path
 " endfor
 
+" Load all plugins now.
+" Plugins need to be added to runtimepath before helptags can be generated.
+" packloadall
+
+" Load all of the helptags now, after plugins have been loaded.
+" All messages and errors will be ignored.
+silent! helptags ALL

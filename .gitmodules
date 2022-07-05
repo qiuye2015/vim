@@ -1,6 +1,3 @@
-[submodule "pack/vendor_fjp/start/mru"]
-	path = pack/vendor_fjp/start/mru
-	url = https://gitee.com/qiuye_dlmu/mru
 [submodule "pack/vendor_fjp/start/nerdtree"]
 	path = pack/vendor_fjp/start/nerdtree
 	url = https://gitee.com/qiuye_dlmu/nerdtree
@@ -10,9 +7,6 @@
 [submodule "pack/vendor_fjp/start/tagbar"]
 	path = pack/vendor_fjp/start/tagbar
 	url = https://gitee.com/qiuye_dlmu/tagbar
-[submodule "pack/vendor_fjp/start/fzf"]
-	path = pack/vendor_fjp/start/fzf
-	url = https://gitee.com/qiuye_dlmu/fzf
 [submodule "pack/vendor_fjp/start/vim-commentary"]
 	path = pack/vendor_fjp/start/vim-commentary
 	url = https://gitee.com/qiuye_dlmu/vim-commentary
@@ -22,12 +16,6 @@
 [submodule "pack/vendor_fjp/start/a.vim"]
 	path = pack/vendor_fjp/start/a.vim
 	url = https://gitee.com/qiuye_dlmu/a.vim
-[submodule "pack/vendor_fjp/start/syntastic"]
-	path = pack/vendor_fjp/start/syntastic
-	url = https://gitee.com/qiuye_dlmu/syntastic
-[submodule "pack/vendor_fjp/start/ack.vim"]
-	path = pack/vendor_fjp/start/ack.vim
-	url = https://gitee.com/qiuye_dlmu/ack.vim
 [submodule "pack/vendor_fjp/start/vim-airline"]
 	path = pack/vendor_fjp/start/vim-airline
 	url = https://gitee.com/qiuye_dlmu/vim-airline
@@ -88,3 +76,9 @@
 [submodule "pack/vendor_fjp/start/vim-devicons"]
 	path = pack/vendor_fjp/start/vim-devicons
 	url = https://github.com/ryanoasis/vim-devicons
+[submodule "pack/vendor_fjp/start/ale"]
+	path = pack/vendor_fjp/start/ale
+	url = https://gitee.com/qiuye_dlmu/ale
+[submodule "pack/vendor_fjp/start/fzf.vim"]
+	path = pack/vendor_fjp/start/fzf.vim
+	url = https://github.com/junegunn/fzf.vim

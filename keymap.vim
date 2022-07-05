@@ -39,23 +39,12 @@
 " gc: 注释,或取消注释选中行
 "
 "--------------------------------------
-" syntastic Key Map
+" ale Key Map
 "--------------------------------------
-" :SyntasticInfo [python]        查看是否有配置完成
-" :SyntasticToggleMode           将Syntastic切换到被动模式,将禁用自动检查
-" :SyntasticCheck                手动语法检查
-" :lclose
-
-let g:syntastic_is_open = 0
-function! SyntasticToggle()
-    if g:syntastic_is_open == 1
-        lclose
-        let g:syntastic_is_open = 0
-    else
-        Errors
-        let g:syntastic_is_open = 1
-    endif
-endfunction
+" :ALEInfo
+" :ALEFixSuggest
+" :ALEGoToDefinition
+" :ALEFindReferences
 
 "--------------------------------------
 " a.vim Key Map
@@ -159,18 +148,53 @@ endfunction
 " CTRL-T   Jump to older entry in the tag stack
 " CTRL-O   Go to Older cursor position in jump list
 " CTRL-I   Go to Newer cursor position in jump list
-nmap     <silent> <leader>/ gcc
-nnoremap <silent> <leader>u :Mru<cr>
-nnoremap <silent> <leader>p :call fzf#Open()<cr>
-nnoremap <silent> <leader>f :Ack!<Space>
 nnoremap <silent> <leader>t :TagbarToggle<cr>
 nnoremap <silent> <leader>e :NERDTreeToggle<cr>
-nnoremap <silent> <leader>n :NERDTreeFind<cr>
-nnoremap <silent> <leader>a :call SyntasticToggle()<cr>     " 打开/关闭语法检查
+nnoremap <silent> <leader>g :NERDTreeFind<cr>
 nnoremap <silent> <leader>l :IndentLinesToggle<cr>          " 打开/关闭缩进线条
 nnoremap <silent> <leader>gt :GitGutterToggle<cr>           " git显示
 nnoremap <silent> <leader>gf :GitGutterFold<cr>             " 折叠没有改变的行,zr展开3行
 nnoremap <silent> <leader>gb :<C-u>call gitblame#echo()<CR> " git-blame.vim
+
+" <junegunn/fzf.vim>
+" mru
+nnoremap <silent> <leader>m   :History<CR>
+" 文件模糊搜索
+nnoremap <silent> <leader>p   :Files<CR>
+" 全局搜索文件
+nnoremap <silent> <leader>f   :Ag <C-R><C-W><CR>
+nnoremap <silent> <leader>fw  :Ag <C-R><C-A><CR>
+xnoremap <silent> <leader>fw  y:Ag <C-R>"<CR>
+nnoremap <leader>fa :Ag
+nnoremap <leader>fb :BLines
+nnoremap <leader>fl :Lines
+nnoremap <leader>ff :Files
+nnoremap <leader>fg :GFiles
+nnoremap <leader>f? :GFiles?
+nnoremap <leader>ft :Tags<cr>
+nnoremap <leader>fc :Commits
+nnoremap <leader>fh: :History:<CR>
+nnoremap <leader>fh/ :History/<CR>
+" Path completion with custom source command
+inoremap <expr> <c-x><c-f> fzf#vim#complete#path('fd')
+inoremap <expr> <c-x><c-f> fzf#vim#complete#path('rg --files')
+" Word completion with custom spec with popup layout option
+inoremap <expr> <c-x><c-k> fzf#vim#complete#word({'window': { 'width': 0.2, 'height': 0.9, 'xoffset': 1 }})
+
+imap <c-x><c-k> <plug>(fzf-complete-word)
+imap <c-x><c-f> <plug>(fzf-complete-path)
+" inoremap <expr> <c-x><c-d> fzf#vim#complete#path('blsd')
+imap <c-x><c-j> <plug>(fzf-complete-file-ag)
+imap <c-x><c-l> <plug>(fzf-complete-line)
+
+
+" <dense-analysis/ale>
+" 普通模式下，sp前往上一个错误或警告，sn前往下一个错误或警告
+nmap sn <Plug>(ale_next_wrap)
+nmap sp <Plug>(ale_previous_wrap)
+nmap <leader>a :ALEToggle<CR>                               " 触发/关闭语法检查
+nmap <leader>s :ALEDetail<CR>                               " 查看错误或警告的详细信息
+
 " <vim-gitgutter> git区块之间跳转
 " nmap ]c <Plug>GitGutterNextHunk
 " nmap [c <Plug>GitGutterPrevHunk
@@ -179,6 +203,9 @@ nnoremap <silent> <leader>gb :<C-u>call gitblame#echo()<CR> " git-blame.vim
 " <M-e> : Fast Wrap (g:AutoPairsShortcutFastWrap)
 " <M-n> : Jump to next closed pair (g:AutoPairsShortcutJump)
 " <M-b> : BackInsert (g:AutoPairsShortcutBackInsert)
+
+" <github/copilot.vim>
+imap <silent><script><expr> <C-J> copilot#Accept("\<CR>")
 
 " AsyncRun
 " AsyncTask
@@ -209,15 +236,15 @@ inoremap <silent> <F2> <esc> :ShowColorScheme<cr>
 " F12 步出
 " mnemonic 'di' = 'debug inspect' (pick your own, if you prefer!)
 " for normal mode - the word under the cursor
-nmap <Leader>di <Plug>VimspectorBalloonEval
+nmap <leader>di <Plug>VimspectorBalloonEval
 " for visual mode, the visually selected text
-xmap <Leader>di <Plug>VimspectorBalloonEval
+xmap <leader>di <Plug>VimspectorBalloonEval
 command! -nargs=0 Gvimspector :call s:generate_vimspector_conf()
-nnoremap <leader>gd :call s:generate_vimspector_conf()
+nnoremap <leader>d :call s:generate_vimspector_conf()
 
 " coc-clangd
 command! -nargs=0 Gcmake :call s:generate_compile_commands()
-nnoremap <leader>gc :call s:generate_compile_commands()
+nnoremap <leader>c :call s:generate_compile_commands()
 
 " splitjoin.vim
 " gS                           将一行拆分为多行
@@ -231,15 +258,19 @@ nnoremap <leader>gc :call s:generate_compile_commands()
 " :GoTest                      测试
 " :GoTestFunc                  测试当前鼠标所在函数
 " :GoCoverage                  测试覆盖率
+
+" :GoImpl                      当前结构体要实现哪个接口
+" :GoImpl b *B fmt.Stringer    实现stringer接口
 " :GoImports
 " :GoMetaLinter
 " :GoRename newName            重命名
 " :GoAddTags json              给结构体增加tag
-" :GoImpl                      当前结构体要实现哪个接口
-" :GoImpl b *B fmt.Stringer    实现stringer接口
 " :GoDoc                       显示文档
 " :GoInfo                      显示函数的形参和返回值
+"  如果是接口实现只能跳转到 interface 定义而非 struct 实现
 " :GoDef                       gd or ctrl-] 跳入; ctrl-t 跳回
+" :GoCallees                   从函数调用处跳转到接口的真正实现，而不是接口定义 (方法调用点 -> struct 方法实现)
+" :GoCallers                   找到当前函数被调用的地点
 " :GoDecls                     显示所有类型和函数声明
 " :GoDeclsDir                  显示整个目录下文件所有类型和函数声明
 " :GoFreevars                  重构提取函数
@@ -251,8 +282,8 @@ nnoremap <leader>gc :call s:generate_compile_commands()
 " [[                       -> jump to previous function
 
 " Open :GoDeclsDir with ctrl-g
-nmap <C-g> :GoDeclsDir<cr>
-imap <C-g> <esc>:<C-u>GoDeclsDir<cr>
+nmap <C-G> :GoDeclsDir<cr>
+imap <C-G> <esc>:<C-u>GoDeclsDir<cr>
 
 augroup go
   autocmd!
@@ -264,27 +295,27 @@ augroup go
   autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
 
   " :GoTest
-  " autocmd FileType go nmap <leader>t  <Plug>(go-test)
+  autocmd FileType go nmap <leader>gt  <Plug>(go-test)
 
   " :GoRun
-  autocmd FileType go nmap <leader>r  <Plug>(go-run)
+  autocmd FileType go nmap <leader>gr  <Plug>(go-run)
 
   " :GoDoc
-  autocmd FileType go nmap <Leader>d <Plug>(go-doc)
+  autocmd FileType go nmap <leader>gd <Plug>(go-doc)
 
   " :GoCoverageToggle
-  autocmd FileType go nmap <Leader>c <Plug>(go-coverage-toggle)
+  autocmd FileType go nmap <leader>gc <Plug>(go-coverage-toggle)
 
   " :GoInfo
-  autocmd FileType go nmap <Leader>i <Plug>(go-info)
+  autocmd FileType go nmap <leader>gi <Plug>(go-info)
 
   " :GoMetaLinter
-  autocmd FileType go nmap <Leader>m <Plug>(go-metalinter)
+  autocmd FileType go nmap <leader>gm <Plug>(go-metalinter)
 
   " :GoDef but opens in a vertical split
-  autocmd FileType go nmap <Leader>v <Plug>(go-def-vertical)
+  autocmd FileType go nmap <leader>gv <Plug>(go-def-vertical)
   " :GoDef but opens in a horizontal split
-  autocmd FileType go nmap <Leader>s <Plug>(go-def-split)
+  autocmd FileType go nmap <leader>gs <Plug>(go-def-split)
 
   " :GoAlternate  commands :A, :AV, :AS and :AT
   autocmd Filetype go command! -bang A call go#alternate#Switch(<bang>0, 'edit')
@@ -292,5 +323,3 @@ augroup go
   autocmd Filetype go command! -bang AS call go#alternate#Switch(<bang>0, 'split')
   autocmd Filetype go command! -bang AT call go#alternate#Switch(<bang>0, 'tabe')
 augroup END
-
-
