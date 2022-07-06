@@ -88,3 +88,4 @@
 [submodule "pack/vendor_fjp/start/coc.nvim"]
 	path = pack/vendor_fjp/start/coc.nvim
 	url = https://gitee.com/qiuye_dlmu/coc.nvim.git
+	branch = release
