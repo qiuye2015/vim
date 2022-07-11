@@ -123,7 +123,7 @@ if exists('$TMUX') && !exists('$NORENAME')
   au VimLeave * call system('tmux set-window automatic-rename on')
 endif
 
-let $FZF_DEFAULT_OPTS .= ' --inline-info'
+" let $FZF_DEFAULT_OPTS .= ' --inline-info'
 
 command! -nargs=1 Count execute printf('%%s/%s//gn', escape(<q-args>, '/')) | normal! ``
 

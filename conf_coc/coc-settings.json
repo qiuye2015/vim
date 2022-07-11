@@ -67,7 +67,7 @@
   "sh.enable": true,
   // coc-clangd
   "clangd.enabled": true,
-  "clangd.path": "clangd",
+  "clangd.path": "~/.config/nvim/pack/coc_fjp/coc_data/extensions/coc-clangd-data/install/14.0.3/clangd_14.0.3/bin/clangd",
   "clangd.checkUpdates": false,
   "clangd.disableCompletion": false,
   "clangd.disableDiagnostics": false,
@@ -81,7 +81,15 @@
   ],
   // coc-cmake
   "cmake.cmakePath": "cmake",
-  "cmake.formatter": "cmake-format"
+  "cmake.formatter": "cmake-format",
+  "languageserver": {
+    "golang": {
+      "command": "gopls",
+      "args": ["serve", "-debug", "0.0.0.0:8484", "-rpc.trace"],
+      "rootPatterns": ["go.mod"],
+      "filetypes": ["go"]
+    }
+  }
 }
 // coc-diagnostic
 // "coc.preferences.colorSupport": true,

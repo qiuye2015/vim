@@ -5,7 +5,7 @@
 	logallrefupdates = true
 [user]
 	name = qiuye
-	email = xxxxxxxxxx@qq.com
+	email = 1119345739@qq.com
 [remote "origin"]
 	url = git@github.com:qiuye2015/vim.git
 	url = git@gitee.com:qiuye_dlmu/vim.git
@@ -136,17 +136,14 @@
 [submodule "pack/vendor_fjp/start/asynctasks.vim"]
 	url = https://github.com/skywind3000/asynctasks.vim
 	active = true
-[submodule "pack/vendor_fjp/start/vim-terminal-help"]
-	url = https://gitee.com/qiuye_dlmu/vim-terminal-help
-	active = true
 [submodule "pack/vendor_fjp/start/copilot.vim"]
 	url = https://gitee.com/qiuye_dlmu/copilot.vim
 	active = true
-[submodule "pack/vendor_fjp/start/git-blame.vim"]
-	url = https://gitee.com/qiuye_dlmu/git-blame.vim
-	active = true
 [submodule "pack/vendor_fjp/opt/vim-colorschemes"]
 	url = https://gitee.com/qiuye_dlmu/vim-colorschemes/
+	active = true
+[submodule "pack/vendor_fjp/start/git-blame.vim"]
+	url = https://gitee.com/qiuye_dlmu/git-blame.vim
 	active = true
 [submodule "pack/vendor_fjp/start/change-colorscheme"]
 	url = https://gitee.com/qiuye_dlmu/change-colorscheme
@@ -156,4 +153,22 @@
 	active = true
 [submodule "pack/vendor_fjp/start/vim-snippets"]
 	url = https://github.com/honza/vim-snippets
+	active = true
+[submodule "pack/vendor_fjp/start/vim-terminal-help"]
+	url = https://gitee.com/qiuye_dlmu/vim-terminal-help
+	active = true
+[submodule "pack/vendor_fjp/start/splitjoin"]
+	url = https://github.com/AndrewRadev/splitjoin.vim
+	active = true
+[submodule "pack/vendor_fjp/start/ale"]
+	url = https://gitee.com/qiuye_dlmu/ale
+	active = true
+[submodule "pack/vendor_fjp/start/fzf.vim"]
+	url = https://github.com/junegunn/fzf.vim
+	active = true
+[submodule "pack/vendor_fjp/opt/vimspector"]
+	url = https://gitee.com/qiuye_dlmu/vimspector.git
+	active = true
+[submodule "pack/vendor_fjp/start/coc.nvim"]
+	url = https://gitee.com/qiuye_dlmu/coc.nvim.git
 	active = true

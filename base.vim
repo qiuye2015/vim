@@ -36,7 +36,7 @@ nnoremap <C-S> :%s/\<<C-r><C-w>\>//g<left><left>
 " dark/light切换
 nnoremap <S-B> :call <SID>ToggleBackground()<CR>
 " 复制模式开关
-nnoremap <S-C> :call ToggleCopy()<CR>
+nnoremap <S-P> :call ToggleCopy()<CR>
 " list开关
 nnoremap <S-L> :set list! list?<CR>
 " number关

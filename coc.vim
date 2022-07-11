@@ -73,8 +73,8 @@ nnoremap <silent><nowait> <space>s  :<C-u>CocList -I symbols<cr>
 " Find symbol of current document.
 nnoremap <silent><nowait> <space>o  :<C-u>CocList outline<cr>
 
-" call SetupCommandAbbrs('C', 'CocConfig')
-nnoremap <silent><nowait> <space>0  :CocConfig<cr>
+call SetupCommandAbbrs('C', 'CocConfig')
+" nnoremap <silent><nowait> <space>0  :CocConfig<cr>
 
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
@@ -104,7 +104,7 @@ nmap <silent> gr <Plug>(coc-references)
 " Symbol renaming.
 nmap <space>rn <Plug>(coc-rename)
 " Use K to show documentation in preview window.
-nnoremap <silent> K :call <SID>show_documentation()<CR>
+nnoremap <silent> H :call <SID>show_documentation()<CR>
 
 function! s:show_documentation()
   if CocAction('hasProvider', 'hover')
@@ -241,5 +241,3 @@ let g:markdown_fenced_languages = [
 " coc-yaml
 "===============
 " :CocOutline 提供文件大纲
-
-

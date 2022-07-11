@@ -40,9 +40,10 @@
 <C-Right>  # 选择vim窗口
 
 <S-B>      # dark/light切换
-<S-C>      # 复制模式开关
+<S-C>      # CocConfig
 <S-L>      # list开关
 <S-M>      # number关
+<S-P>      # 复制模式开关
 <S-R>      # CompileRun
 
 ## inoremap
@@ -132,6 +133,7 @@
 ```
 
 # registers
+
 ```bash
 CTRL-F  the Filename under the cursor
 CTRL-P  the Filename under the cursor, expanded with  'path' as in gf
