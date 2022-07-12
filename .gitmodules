@@ -43,9 +43,6 @@
 [submodule "pack/vendor_fjp/start/asynctasks.vim"]
 	path = pack/vendor_fjp/start/asynctasks.vim
 	url = https://gitee.com/qiuye_dlmu/asynctasks.vim
-[submodule "pack/vendor_fjp/start/copilot.vim"]
-	path = pack/vendor_fjp/start/copilot.vim
-	url = https://gitee.com/qiuye_dlmu/copilot.vim
 [submodule "pack/vendor_fjp/start/git-blame.vim"]
 	path = pack/vendor_fjp/start/git-blame.vim
 	url = https://gitee.com/qiuye_dlmu/git-blame.vim
@@ -92,3 +89,6 @@
 [submodule "pack/vendor_fjp/start/asyncrun.vim"]
 	path = pack/vendor_fjp/start/asyncrun.vim
 	url = https://gitee.com/qiuye_dlmu/asyncrun.vim/
+[submodule "pack/vendor_fjp/start/copilot.vim"]
+	path = pack/vendor_fjp/start/copilot.vim
+	url = https://gitee.com/qiuye_dlmu/copilot.vim
