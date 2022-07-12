@@ -60,22 +60,22 @@
 	url = https://gitee.com/qiuye_dlmu/vim-gitgutter
 [submodule "pack/vendor_fjp/start/vim-snippets"]
 	path = pack/vendor_fjp/start/vim-snippets
-	url = https://github.com/honza/vim-snippets
+	url = https://gitee.com/qiuye_dlmu/vim-snippets
 [submodule "pack/vendor_fjp/start/vim-terminal-help"]
 	path = pack/vendor_fjp/start/vim-terminal-help
 	url = https://gitee.com/qiuye_dlmu/vim-terminal-help
 [submodule "pack/vendor_fjp/start/splitjoin"]
 	path = pack/vendor_fjp/start/splitjoin
-	url = https://github.com/AndrewRadev/splitjoin.vim
+	url = https://gitee.com/qiuye_dlmu/splitjoin.vim
 [submodule "pack/vendor_fjp/start/vim-devicons"]
 	path = pack/vendor_fjp/start/vim-devicons
-	url = https://github.com/ryanoasis/vim-devicons
+	url = https://gitee.com/qiuye_dlmu/vim-devicons
 [submodule "pack/vendor_fjp/start/ale"]
 	path = pack/vendor_fjp/start/ale
 	url = https://gitee.com/qiuye_dlmu/ale
 [submodule "pack/vendor_fjp/start/fzf.vim"]
 	path = pack/vendor_fjp/start/fzf.vim
-	url = https://github.com/junegunn/fzf.vim
+	url = https://gitee.com/qiuye_dlmu/fzf.vim
 [submodule "pack/vendor_fjp/opt/vimspector"]
 	path = pack/vendor_fjp/opt/vimspector
 	url = https://gitee.com/qiuye_dlmu/vimspector.git
