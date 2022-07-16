@@ -75,6 +75,7 @@
 <leader>7             # AsyncTask 编译单个文件
 <leader>8             # AsyncTask 运行单个文件
 <leader>9             # AsyncTask 打开Quickfix窗口
+
 <leader>a             # ale触发/关闭语法检查
 <leader>b             # GoBuild|GoTestCompile
 <leader>c             # coc-clangd generate_compile_commands 同Gcmake
@@ -105,7 +106,7 @@
 <leader>gs            # GoDef horizontal
 <leader>gt            # GoTest
 <leader>gv            # GoDef vertical
-<leader>h
+<leader>h             # [fzf] Open files in horizontal
 <leader>i
 <leader>j
 <leader>k
@@ -115,10 +116,15 @@
 <leader>o
 <leader>p             # fzf 文件模糊搜索
 <leader>q
-<leader>r
+<leader>r             # Choose color scheme
 <leader>s             # 查看错误或警告的详细信息
 <leader>t             # TagbarToggle
 <leader>u             #
+<leader>v             # [fzf] Open files in vertical
+<leader>w             #
+<leader>x             #
+<leader>y             #
+<leader>z             #
 
 ## inoremap
 <c-x><c-f> fzf#vim#complete#path('fd')
