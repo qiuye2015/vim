@@ -209,7 +209,7 @@ endif
 set showmatch      " 显示匹配的括号
 set matchtime=2    " 显示括号匹配的时间
 set number         " 显示行号
-set relativenumber " 显示相对行号
+" set relativenumber " 显示相对行号
 set wrap           " 一行内显示不下自动换行 nowrap
 set linebreak      " 不会在单词内部折行,显示窗口比较小的时候折行展示
 " set list           " 显示 TAB 键

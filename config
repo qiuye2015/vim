@@ -59,13 +59,13 @@
 	url = https://github.com/lvht/mru
 	active = true
 [submodule "pack/vendor_fjp/start/nerdtree"]
-	url = https://github.com/preservim/nerdtree
+	url = https://gitee.com/qiuye_dlmu/nerdtree
 	active = true
 [submodule "pack/vendor_fjp/start/nerdtree-git-plugin"]
-	url = https://github.com/Xuyuanp/nerdtree-git-plugin
+	url = https://gitee.com/qiuye_dlmu/nerdtree-git-plugin
 	active = true
 [submodule "pack/vendor_fjp/start/tagbar"]
-	url = https://github.com/preservim/tagbar
+	url = https://gitee.com/qiuye_dlmu/tagbar
 	active = true
 [submodule "pack/vendor_fjp/start/fzf"]
 	url = https://github.com/epii1/fzf
@@ -74,16 +74,16 @@
 	url = https://github.com/junegunn/vim-easy-align
 	active = true
 [submodule "pack/vendor_fjp/start/vim-commentary"]
-	url = https://github.com/tpope/vim-commentary
+	url = https://gitee.com/qiuye_dlmu/vim-commentary
 	active = true
 [submodule "pack/vendor_fjp/start/auto-pairs"]
 	url = https://github.com/jiangmiao/auto-pairs
 	active = true
 [submodule "pack/vendor_fjp/start/indentLine"]
-	url = https://github.com/Yggdroot/indentLine
+	url = https://gitee.com/qiuye_dlmu/indentLine
 	active = true
 [submodule "pack/vendor_fjp/start/a.vim"]
-	url = https://github.com/vim-scripts/a.vim
+	url = https://gitee.com/qiuye_dlmu/a.vim
 	active = true
 [submodule "pack/vendor_fjp/start/syntastic"]
 	url = https://github.com/vim-syntastic/syntastic
@@ -92,49 +92,49 @@
 	url = https://github.com/mileszs/ack.vim
 	active = true
 [submodule "pack/vendor_fjp/start/vim-airline"]
-	url = https://github.com/vim-airline/vim-airline
+	url = https://gitee.com/qiuye_dlmu/vim-airline
 	active = true
 [submodule "pack/vendor_fjp/start/tabular"]
-	url = https://github.com/godlygeek/tabular
+	url = https://gitee.com/qiuye_dlmu/tabular
 	active = true
 [submodule "pack/vendor_fjp/start/vim-markdown"]
-	url = https://github.com/plasticboy/vim-markdown
+	url = https://gitee.com/qiuye_dlmu/vim-markdown
 	active = true
 [submodule "pack/vendor_fjp/start/tender.vim"]
 	url = https://github.com/jacoborus/tender.vim
 	active = true
 [submodule "pack/vendor_fjp/start/vim-go"]
-	url = https://github.com/fatih/vim-go
+	url = https://gitee.com/qiuye_dlmu/vim-go
 	active = true
 [submodule "pack/vendor_fjp/start/vim-gitgutter"]
 	url = https://gitee.com/qiuye_dlmu/vim-gitgutter
 	active = true
 [submodule "pack/vendor_fjp/start/nvim-colorizer.lua"]
-	url = https://github.com/norcalli/nvim-colorizer.lua
+	url = https://gitee.com/qiuye_dlmu/nvim-colorizer.lua
 	active = true
 [submodule "pack/vendor_fjp/start/vim-airline-themes"]
-	url = https://github.com/vim-airline/vim-airline-themes
+	url = https://gitee.com/qiuye_dlmu/vim-airline-themes
 	active = true
 [submodule "pack/vendor_fjp/start/vim-colorscheme-icons"]
 	url = https://github.com/bryanmylee/vim-colorscheme-icons
 	active = true
 [submodule "pack/vendor_fjp/start/vim-devicons"]
-	url = https://github.com/ryanoasis/vim-devicons
+	url = https://gitee.com/qiuye_dlmu/vim-devicons
 	active = true
 [submodule "pack/vendor_fjp/start/vim-cpp-enhanced-highlight"]
-	url = https://github.com/octol/vim-cpp-enhanced-highlight
+	url = https://gitee.com/qiuye_dlmu/vim-cpp-enhanced-highlight
 	active = true
 [submodule "pack/vendor_fjp/start/vim-colorschemes"]
-	url = https://github.com/flazz/vim-colorschemes/
+	url = https://gitee.com/qiuye_dlmu/vim-colorschemes/
 	active = true
 [submodule "pack/vendor_fjp/start/vim-gutentags"]
-	url = https://github.com/ludovicchabant/vim-gutentags
+	url = https://gitee.com/qiuye_dlmu/vim-gutentags
 	active = true
 [submodule "pack/vendor_fjp/start/asyncrun.vim"]
-	url = https://github.com/skywind3000/asyncrun.vim
+	url = https://gitee.com/qiuye_dlmu/asyncrun.vim/
 	active = true
 [submodule "pack/vendor_fjp/start/asynctasks.vim"]
-	url = https://github.com/skywind3000/asynctasks.vim
+	url = https://gitee.com/qiuye_dlmu/asynctasks.vim
 	active = true
 [submodule "pack/vendor_fjp/start/copilot.vim"]
 	url = https://gitee.com/qiuye_dlmu/copilot.vim
@@ -152,23 +152,26 @@
 	url = https://gitee.com/mirrors_bronson/vim-trailing-whitespace
 	active = true
 [submodule "pack/vendor_fjp/start/vim-snippets"]
-	url = https://github.com/honza/vim-snippets
+	url = https://gitee.com/qiuye_dlmu/vim-snippets
 	active = true
 [submodule "pack/vendor_fjp/start/vim-terminal-help"]
 	url = https://gitee.com/qiuye_dlmu/vim-terminal-help
 	active = true
 [submodule "pack/vendor_fjp/start/splitjoin"]
-	url = https://github.com/AndrewRadev/splitjoin.vim
+	url = https://gitee.com/qiuye_dlmu/splitjoin.vim
 	active = true
 [submodule "pack/vendor_fjp/start/ale"]
 	url = https://gitee.com/qiuye_dlmu/ale
 	active = true
 [submodule "pack/vendor_fjp/start/fzf.vim"]
-	url = https://github.com/junegunn/fzf.vim
+	url = https://gitee.com/qiuye_dlmu/fzf.vim
 	active = true
 [submodule "pack/vendor_fjp/opt/vimspector"]
 	url = https://gitee.com/qiuye_dlmu/vimspector.git
 	active = true
 [submodule "pack/vendor_fjp/start/coc.nvim"]
 	url = https://gitee.com/qiuye_dlmu/coc.nvim.git
+	active = true
+[submodule "pack/vendor_fjp/start/fzf.main"]
+	url = https://gitee.com/qiuye_dlmu/fzf.main
 	active = true
