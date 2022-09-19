@@ -338,6 +338,7 @@ endif
 "==============================================================================
 " netrw
 "==============================================================================
+" 每当您修改~/.vim的内容时，它都会在.netrwhist中添加一个条目
 let g:netrw_winsize = 20
 let g:netrw_liststyle = 3
 let g:netrw_banner = 0
@@ -392,7 +393,7 @@ endfunction
 " global variable
 let g:copymode=0
 " function
-function ToggleCopy()
+function! ToggleCopy()
     if g:copymode
         set number
         set relativenumber
@@ -408,7 +409,7 @@ endfunction
 " 插入模式时开启，普通模式时关闭
 autocmd InsertLeave * call ToggleCursor()
 autocmd InsertEnter * call ToggleCursor()
-function ToggleCursor() abort
+function! ToggleCursor() abort
 	set cursorline!
 	set cursorcolumn!
 endfunction
