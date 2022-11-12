@@ -5,6 +5,9 @@ Support both vim8 and neovim.
 ## usage
 
 ```bash
+# base
+git clone git@gitee.com:qiuye_dlmu/vim.git
+git submodule update --init
 # for neovim
 git clone --recursive https://github.com/qiue2015/vim.git ~/.config/nvim
 
