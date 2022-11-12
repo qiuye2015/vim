@@ -99,8 +99,7 @@ nnoremap Y y$
 " zo 打开当前折叠
 
 " 用空格键来开关折叠
-" nnoremap <space> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
-nnoremap <C-+> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
+nnoremap <space> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
 " Ctrl-Shift-_
 nnoremap <C-_> @=((foldclosed(line('.')) < 0) ? 'zM' : 'zR')<CR>
 
@@ -452,7 +451,7 @@ augroup END
 
 let g:python_host_skip_check=1
 let g:python3_host_skip_check=1
-let g:python_host_prog  = '/usr/bin/python2'
-let g:python3_host_prog  = '/usr/bin/python3'
+" let g:python_host_prog  = '/usr/bin/python2'
+" let g:python3_host_prog  = '/usr/bin/python3'
 " let g:loaded_python_provider = 0
 " let g:loaded_python3_provider = 0
