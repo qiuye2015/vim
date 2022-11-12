@@ -2,10 +2,11 @@
     repositoryformatversion = 0
     filemode = true
     bare = false
+    ignorecase = true
     logallrefupdates = true
 [user]
     name = qiuye
-    email = qiuye_tju@163.com 
+    email = qiuye_tju@163.com
 [remote "origin"]
     url = git@github.com:qiuye2015/vim.git
     url = git@gitee.com:qiuye_dlmu/vim.git
