@@ -317,7 +317,8 @@ let g:go_metalinter_enabled = ['vet', 'errcheck', 'staticcheck', 'gosimple']
 " let g:go_metalinter_autosave_enabled = ['vet', 'revive']
 " let g:go_metalinter_deadline = "5s"
 
-let g:go_def_mode = 'godef'           " default guru
+let g:go_def_mode = 'gopls'
+let g:go_info_mode = 'gopls'
 let g:go_decls_includes = "func,type" " default
 
 let g:go_list_type = "quickfix"
