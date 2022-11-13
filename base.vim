@@ -423,18 +423,30 @@ func! CompileRun()
     elseif &filetype == 'cpp'
         set splitbelow
         silent exec "!g++ -std=c++11 % -Wall -o %<"
-        :term ./%<
+        if has('nvim')
+            :split | term ./%<
+        else
+            :term ./%<
+        endif
         :res -10
     elseif &filetype == 'sh'
         :!time bash %
     elseif &filetype == 'python'
         " exec '!time python %'
         set splitbelow
-        :term python3 %
+        if has('nvim')
+            :split | term python3 %
+        else
+            :term python3 %
+        endif
         :res -10
     elseif &filetype == 'go'
         set splitbelow
-        :term go run .
+        if has('nvim')
+            :split | term go run .
+        else
+            :term go run .
+        endif
         :res -10
     endif
 endfunc

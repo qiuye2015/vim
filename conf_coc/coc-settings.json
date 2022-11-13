@@ -63,8 +63,12 @@
   "pyright.enable": true,
   "python.pythonPath": "python",
   "python.linting.enabled": true,
+  "python.analysis.autoImportCompletions": true,
   "python.formatting.provider": "autopep8",
   "python.formatting.autopep8Path": "/opt/homebrew/bin/autopep8",
+  // 显示嵌入式提示
+  "pyright.inlayHints.functionReturnTypes": false,
+  "pyright.inlayHints.variableTypes": false,
   // coc-sh
   "sh.enable": true,
   // coc-clangd
