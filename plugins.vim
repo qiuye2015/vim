@@ -40,8 +40,7 @@
 " c++高亮               <octol/vim-cpp-enhanced-highlight>
 " 快速文件切换.c ->.h   <vim-scripts/a.vim>
 
-" 语法高亮md            <plasticboy/vim-markdown>
-" 文本对齐              <godlygeek/tabular>,同vim-easy-align,vim-markdown依赖
+" 文本对齐              <godlygeek/tabular>,同vim-easy-align
 "
 "==============================================================================
 " 插件设置
@@ -180,7 +179,11 @@ let g:gitgutter_sign_modified_removed = 'ww'
 let g:tagbar_compact = 1 " 不显示帮助信息
 let g:tagbar_iconchars = ['▸', '▾']
 let g:tagbar_width = 30
-" let g:tagbar_autofocus = 1 " 光标在tagbar页面内
+let g:tagbar_autofocus = 1 " 光标在tagbar页面内
+" let g:tagbar_autopreview = 1
+let g:tagbar_previewwin_pos = 'rightbelow'
+let g:tagbar_show_linenumbers = 1 " 0/1/2/-1
+let g:tagbar_sort = 0 " 0不按照名字排序
 
 " 把tag文件的名字从tags换成了.tags,不容易污染当前项目的文件,删除时也好删除
 " 前半部分"./.tags;" 代表在文件的所在目录下(不是":pwd"返回的Vim当前目录"查找名字
@@ -350,20 +353,6 @@ let g:cpp_experimental_simple_template_highlight = 1
 " let g:cpp_experimental_template_highlight = 1 " 比上一个更快,但易出错
 let g:cpp_concepts_highlight = 1
 let g:cpp_no_function_highlight = 1
-
-"-----------------------------------------------------------------------------
-let g:vim_markdown_folding_disabled = 0         " 禁用md折叠
-let g:vim_markdown_toc_autofit = 1              " 启用TOC窗口自动拟合
-let g:vim_markdown_folding_level = 6            " 设置标题折叠级别 1-6
-let g:vim_markdown_folding_style_pythonic = 1
-let g:vim_markdown_fenced_languages = ['csharp=cs'] " 屏蔽代码块语言
-
-" -----------------------------------------------------------------------------
-let g:copilot_no_tab_map = v:true
-" highlight CopilotSuggestion guifg=#555555 ctermfg=8
-" :Copilot status
-" :Copilot disable
-" :Copilot enable
 
 "------------------------------------------------------------------------------
 " 需要的时候加载插件，那就放到 `~/.vim/pack/*/opt/` 目录

@@ -1,3 +1,33 @@
+# 常用快捷键
+
+```bash
+<space>    # 当前行折叠/展开-
+<C-_>      # 递归折叠/展开所有
+<CTRL-]>   # 跳到定义
+<C-T>      # 跳转到旧tag位置
+<C-B>      # 上翻
+<C-F>      # 下翻 （startofline）
+<C-E>      # 目录树 Lexplore
+<C-W>      # 轮询选择vim窗口
+<S-B>      # dark/light切换
+<S-L>      # list开关
+<S-M>      # number关
+<S-P>      # 复制模式开关
+<S-R>      # CompileRun
+<leader>m             # mru 最近使用文件
+<leader>p             # fzf 文件模糊搜索
+<leader>f             # :Ag <C-R><C-W><CR> 搜索当前单词
+<leader>fw            # :Ag <C-R><C-A><CR> 搜索当前单词 单独数字不可以
+<leader>h             # [fzf] Open files in horizontal
+<leader>v             # [fzf] Open files in vertical
+<leader>l             # 缩进线条
+<leader>e             # NERDTreeToggle 目录树
+<leader>t             # TagbarToggle
+
+```
+
+# 所有快捷键
+
 ```bash
 <F1>       # RandomColorScheme
 <F2>       # ShowColorScheme
@@ -40,14 +70,12 @@
 <C-Right>  # 选择vim窗口
 
 <S-B>      # dark/light切换
-<S-C>      # CocConfig
 <S-L>      # list开关
 <S-M>      # number关
 <S-P>      # 复制模式开关
 <S-R>      # CompileRun
 
 ## inoremap
-<C-J>      # copilot#Accept
 # <c-x><c-f> # 补全路径
 # <c-x><c-k> # 单词补全
 # <c-x><c-j> # 文件补全？
@@ -136,6 +164,7 @@
 <c-x><c-l> <plug>(fzf-complete-line)
 
 # coc.vim      space-x
+<space-0>      # CocConfig
 ```
 
 # registers
@@ -147,3 +176,27 @@ CTRL-W  the Word under the cursor
 CTRL-A  the WORD under the cursor;
 CTRL-L  the line under the cursor
 ```
+
+### Markdown
+
+| 快捷键 | 创建的文字       |
+| ------ | ---------------- |
+| `,n`   | ---              |
+| `,b`   | **粗体**文字     |
+| `,s`   | ~~被划去~~的文字 |
+| `,i`   | *斜体*文字       |
+| `,d`   | `代码块`         |
+| `,c`   | 大的 `代码块`    |
+| `,m`   | - [ ] 清单       |
+| `,p`   | 图片             |
+| `,a`   | [链接]()         |
+| `,1`   | # H1             |
+| `,2`   | ## H2            |
+| `,3`   | ### H3           |
+| `,4`   | #### H4          |
+| `,l`   | --------         |
+| `,g`   | img              |
+
+`,f` 去往下一个 `<++>` (占位符)
+
+`,w` 去往下一个 `<++>` (占位符) 并帮你按下 `Enter`

@@ -15,6 +15,7 @@ if v:version < 800 | finish | endif
 source ~/.config/nvim/plugins.vim
 source ~/.config/nvim/keymap.vim
 source ~/.config/nvim/coc.vim
+source ~/.config/nvim/md-snippets.vim
 
 " 判断文件是否存在
 if filereadable(expand("$HOME/.vimrc.FJP")) | source $HOME/.vimrc.FJP | endif

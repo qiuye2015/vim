@@ -76,9 +76,6 @@
 [submodule "pack/vendor_fjp/start/coc.nvim"]
 	active = true
 	url = https://gitee.com/qiuye_dlmu/coc.nvim.git
-[submodule "pack/vendor_fjp/start/copilot.vim"]
-	active = true
-	url = https://gitee.com/qiuye_dlmu/copilot.vim
 [submodule "pack/vendor_fjp/start/fzf.main"]
 	active = true
 	url = https://gitee.com/qiuye_dlmu/fzf.main
@@ -136,9 +133,6 @@
 [submodule "pack/vendor_fjp/start/vim-gutentags"]
 	active = true
 	url = https://gitee.com/qiuye_dlmu/vim-gutentags
-[submodule "pack/vendor_fjp/start/vim-markdown"]
-	active = true
-	url = https://gitee.com/qiuye_dlmu/vim-markdown
 [submodule "pack/vendor_fjp/start/vim-snippets"]
 	active = true
 	url = https://gitee.com/qiuye_dlmu/vim-snippets

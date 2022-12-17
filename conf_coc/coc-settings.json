@@ -49,9 +49,18 @@
   // coc-snippets
   "snippets.autoTrigger": true,
   "snippets.ultisnips.enable": true,
-  "snippets.ultisnips.directories": ["UltiSnips", "gosnippets/UltiSnips"],
+  "snippets.ultisnips.directories": [
+    "$HOME/.config/nvim/pack/vendor_fjp/start/vim-snippets/snippets/",
+    "UltiSnips",
+    "gosnippets/UltiSnips"
+  ],
   "snippets.snipmate.enable": true,
   "snippets.snipmate.author": "FJP",
+  "snippets.extends": {
+    "cpp": ["c"],
+    "latex": ["tex", "texmath"]
+  },
+  "snippets.userSnippetsDirectory": "$HOME/.config/nvim/Ultisnips/",
   // coc-translator
   "translator.engines": ["youdao"],
   // "translator.enableHover": true,

@@ -55,16 +55,6 @@
 " :AT       新建一个标签页并打开c/h文件
 "
 "--------------------------------------
-" vim-markdown Key Map
-"--------------------------------------
-" :Toc      创建导航垂直窗口
-" :Toch     创建导航水平窗口
-" ]]        转到下一个标题
-" [[        转到上一个标题
-" zM        折叠所有内容
-" zR        打开所有折叠
-"
-"--------------------------------------
 " asyncrun.vim
 "--------------------------------------
 " :AsyncRun[!] [options] {cmd} ... 在后台执行你的命令(和传统的!命令类似)
@@ -223,9 +213,6 @@ nmap <leader>s :ALEDetail<CR>                               " 查看错误或警
 " <M-e> : Fast Wrap (g:AutoPairsShortcutFastWrap)
 " <M-n> : Jump to next closed pair (g:AutoPairsShortcutJump)
 " <M-b> : BackInsert (g:AutoPairsShortcutBackInsert)
-
-" <github/copilot.vim>
-imap <silent><script><expr> <C-J> copilot#Accept("\<CR>")
 
 " AsyncRun
 " AsyncTask

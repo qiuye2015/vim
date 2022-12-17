@@ -128,9 +128,9 @@ set updatetime=100
 "==============================================================================
 " 编码设置
 "==============================================================================
-set ffs=unix,dos,mac    " 设置文件类型 Use Unix as the standard file type
-set encoding=utf-8      " (enc)vim内部使用的编码,包括文件内容,寄存器等
-set fileencoding=utf-8  " (fenc)检测到的文件编码
+set fileformats=unix,mac,dos  " (ffs)设置文件类型 Use Unix as the standard file type
+set encoding=utf-8            " (enc)vim内部使用的编码,包括文件内容,寄存器等
+set fileencoding=utf-8        " (fenc)检测到的文件编码
 set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936,latin-1
 " 打开文件时自动尝试下面顺序的编码,如果执行成功,则该编码为文件编码
 " 并设置fileencoding
@@ -286,10 +286,10 @@ if !exists("g:syntax_on")  " 只让语法高亮设置一次
     syntax enable          " 区别:syntax on会覆盖当前对语法高亮的更改
 endif
 
-set cursorline                         " 突出显示当前行
-set cursorcolumn                       " 突出显示当前列
-" set colorcolumn=100                      " 100列显示垂直线
-" hi ColorColumn ctermbg=blue guibg=blue   " 垂直线颜色
+set cursorline                           " 突出显示当前行
+set cursorcolumn                         " 突出显示当前列
+set colorcolumn=100                      " 100列显示垂直线
+hi ColorColumn ctermbg=blue guibg=blue   " 垂直线颜色
 
 " 设置颜色主题,会在所有 runtimepaths 的 colors 目录寻找同名配置
 " colorscheme pablo
@@ -327,12 +327,16 @@ if has('unnamedplus')
   set clipboard^=unnamed
   set clipboard^=unnamedplus
 endif
+" Copy to system clipboard
+noremap Y "+y
+nnoremap P "*p
 
-" " This enables us to undo files even if you exit Vim.
-" if has('persistent_undo')
-"   set undofile
-"   set undodir=~/.config/nvim/tmp/undo/
-" endif
+" This enables us to undo files even if you exit Vim.
+" 让退出 vim 之后 undo 消息不消失
+if has('persistent_undo')
+  set undofile
+  set undodir=~/.config/nvim/tmp/undo/
+endif
 
 "==============================================================================
 " netrw
@@ -361,13 +365,14 @@ if has("autocmd")
 	autocmd BufWritePost $MYVIMRC source $MYVIMRC
 	autocmd BufEnter * :syntax sync fromstart " 重新同步一下语法着色
 	autocmd BufNewFile,BufRead *.conf set syntax=cfg
-    " 高亮json注释
-    autocmd FileType json syntax match Comment +\/\/.\+$+
-    " 在粘贴时候，如果前边的行带有注释符号，如#、//、"等时，后边的行会自动加上注释符号
-    au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "no rm $"|endif|endif
-    autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
-    " Enter automatically into the files directory
-    autocmd BufEnter * silent! lcd %:p:h
+	autocmd BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
+	" 高亮json注释
+	autocmd FileType json syntax match Comment +\/\/.\+$+
+	" 在粘贴时候，如果前边的行带有注释符号，如#、//、"等时，后边的行会自动加上注释符号
+	au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "no rm $"|endif|endif
+	autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+	" Enter automatically into the files directory
+	" autocmd BufEnter * silent! lcd %:p:h
 endif
 
 " 设置别名
@@ -448,8 +453,28 @@ func! CompileRun()
             :term go run .
         endif
         :res -10
+    elseif &filetype == 'markdown'
+		exec "MarkdownPreview"
     endif
 endfunc
+
+" let filename = '.gitignore'
+" if filereadable(filename)
+"     let igstring = ''
+"     for oline in readfile(filename)
+"         let line = substitute(oline, '\s|\n|\r', '', "g")
+"         if line =~ '^#' | con | endif
+"         if line == '' | con  | endif
+"         if line =~ '^!' | con  | endif
+"         if line =~ '/$' | let igstring .= "," . line . "*" | con | endif
+"         let igstring .= "," . line
+"     endfor
+"     let execstring = "set wildignore=".substitute(igstring, '^,', '', "g")
+"     execute execstring
+" endif
+
+set wildignore+=*/.git/*,.DS_Store,*/venv/*,*/__pycache__/*,*.pyc,*/.venv/*
+" 避免当行过长卡顿
 
 "==============================================================================
 " 特定编程语言

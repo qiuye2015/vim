@@ -73,8 +73,7 @@ nnoremap <silent><nowait> <space>s  :<C-u>CocList -I symbols<cr>
 " Find symbol of current document.
 nnoremap <silent><nowait> <space>o  :<C-u>CocList outline<cr>
 
-call SetupCommandAbbrs('C', 'CocConfig')
-" nnoremap <silent><nowait> <space>0  :CocConfig<cr>
+nnoremap <silent><nowait> <space>0  :CocConfig<cr>
 
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
@@ -183,12 +182,12 @@ xmap <space>x  <Plug>(coc-convert-snippet)
 " Use <C-k> for jump to previous placeholder, it's default of coc.nvim
 " let g:coc_snippet_prev = '<c-k>'
 
-" inoremap <silent><expr> <TAB>
-"       \ pumvisible() ? coc#_select_confirm() :
-"       \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
-"       \ <SID>check_back_space() ? "\<TAB>" :
-"       \ coc#refresh()
-" let g:coc_snippet_next = '<tab>'
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? coc#_select_confirm() :
+      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+let g:coc_snippet_next = '<tab>'
 
 "===============
 " coc-translator

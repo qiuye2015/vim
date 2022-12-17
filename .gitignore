@@ -1,3 +1,5 @@
 tags
-pack/coc_fjp/coc_data/
+.tags
 .netrwhist
+tmp
+pack/coc_fjp/coc_data/
