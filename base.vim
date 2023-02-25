@@ -58,6 +58,10 @@ noremap <C-W> <C-W>w
 xnoremap < <gv
 xnoremap > >gv
 
+" 单行或多行移动
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
+
 " 命令模式按键映射
 cnoremap w!! w !sudo tee % >/dev/null                "  没加sudo导致无法保存时
 cnoremap <C-a> <Home>
@@ -288,7 +292,7 @@ endif
 
 set cursorline                           " 突出显示当前行
 set cursorcolumn                         " 突出显示当前列
-set colorcolumn=100                      " 100列显示垂直线
+" set colorcolumn=100                      " 100列显示垂直线
 hi ColorColumn ctermbg=blue guibg=blue   " 垂直线颜色
 
 " 设置颜色主题,会在所有 runtimepaths 的 colors 目录寻找同名配置
@@ -329,13 +333,13 @@ if has('unnamedplus')
 endif
 " Copy to system clipboard
 noremap Y "+y
-nnoremap P "*p
+noremap P "+p
 
 " This enables us to undo files even if you exit Vim.
 " 让退出 vim 之后 undo 消息不消失
 if has('persistent_undo')
   set undofile
-  set undodir=~/.config/nvim/tmp/undo/
+  set undodir=~/.vim/tmp/undo/
 endif
 
 "==============================================================================

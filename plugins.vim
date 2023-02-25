@@ -297,7 +297,7 @@ let g:asyncrun_bell = 1
 let g:asyncrun_rootmarks = ['.git', '.svn', '.root', '.project', '.hg']
 " let g:asynctasks_rtp_config = "tasks.ini"
 let g:asynctasks_extra_config = [
-    \ '~/.config/nvim/tasks.ini',
+    \ '~/.vim/tasks.ini',
     \ ]
 " output=terminal
 let g:asynctasks_term_pos = 'bottom'
@@ -357,7 +357,7 @@ let g:cpp_no_function_highlight = 1
 "------------------------------------------------------------------------------
 " 需要的时候加载插件，那就放到 `~/.vim/pack/*/opt/` 目录
 "------------------------------------------------------------------------------
-set packpath=~/.config/nvim/
+set packpath=~/.vim/
 
 " packadd! myself
 " packadd! templates_load
@@ -373,7 +373,7 @@ let g:vimspector_enable_mappings = 'HUMAN' " VISUAL_STUDIO
 " insert `:VimspectorInstall` to install
 " 'CodeLLDB'
 let g:vimspector_install_gadgets = [ 'delve', 'debugpy', 'vscode-cpptools', 'vscode-bash-debug']
-" let g:vimspector_base_dir=expand( '$HOME/.config/nvim/vimspector-config' )
+" let g:vimspector_base_dir=expand( '$HOME/.vim/vimspector-config' )
 
 "==============================================================================
 " END

@@ -91,9 +91,9 @@
 function! s:generate_vimspector_conf()
   if empty(glob( '.vimspector.json' ))
     if &filetype == 'c' || 'cpp'
-      !cp ~/.config/nvim/conf_vimspector/c.json ./.vimspector.json
+      !cp ~/.vim/conf_vimspector/c.json ./.vimspector.json
     elseif &filetype == 'python'
-      !cp ~/.config/nvim/conf_vimspector/python.json ./.vimspector.json
+      !cp ~/.vim/conf_vimspector/python.json ./.vimspector.json
     endif
   endif
   e .vimspector.json

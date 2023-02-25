@@ -8,20 +8,20 @@
 " |_____|    `.____.'   |_____|           \_/      |_____| |_____||_____|
 "
 " -----------------------------------------------------------------------------
-source ~/.config/nvim/base.vim
+source ~/.vim/base.vim
 
 if v:version < 800 | finish | endif
 
-source ~/.config/nvim/plugins.vim
-source ~/.config/nvim/keymap.vim
-source ~/.config/nvim/coc.vim
-source ~/.config/nvim/md-snippets.vim
+source ~/.vim/plugins.vim
+source ~/.vim/keymap.vim
+source ~/.vim/coc.vim
+source ~/.vim/md-snippets.vim
 
 " 判断文件是否存在
 if filereadable(expand("$HOME/.vimrc.FJP")) | source $HOME/.vimrc.FJP | endif
 
 " vimrc files
-" for s:path in split(glob('~/.config/nvim/vimrc/*.vim'), "\n")
+" for s:path in split(glob('~/.vim/vimrc/*.vim'), "\n")
 "     exe 'source ' . s:path
 " endfor
 

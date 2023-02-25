@@ -15,9 +15,9 @@
 " :CocList extensions
 " :CocOutline
 
-set rtp+=~/.config/nvim/pack/coc_fjp/start/coc.nvim
-let g:coc_data_home='~/.config/nvim/pack/coc_fjp/coc_data'
-let g:coc_config_home = '~/.config/nvim/conf_coc'
+set rtp+=~/.vim/pack/coc_fjp/start/coc.nvim
+let g:coc_data_home='~/.vim/pack/coc_fjp/coc_data'
+let g:coc_config_home = '~/.vim/conf_coc'
 let g:coc_start_at_startup = 1     " 禁止在vim启动时启动coc服务;手动:CocStart
 " let g:node_client_debug = 1
 " let g:coc_node_path = '/usr/local/opt/node@10/bin/node'
@@ -91,8 +91,8 @@ endfunction
 
 " Make <CR> auto-select the first completion item and notify coc.nvim to
 " format on enter, <cr> could be remapped by other vim plugin
-inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
-                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+" inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+"                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 " GoTo code navigation.
 nmap <silent> gd <Plug>(coc-definition)
@@ -159,6 +159,9 @@ command! -nargs=0 Prettier :CocCommand prettier.forceFormatDocument
 " Formatting selected code.
 xmap <space>fs  <Plug>(coc-format-selected)
 nmap <space>fs <Plug>(coc-format-selected)
+
+" Add `:Format` command to format current buffer
+command! -nargs=0 Format :call CocActionAsync('format')
 
 augroup mygroup
   autocmd!
